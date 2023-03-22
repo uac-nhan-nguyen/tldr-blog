@@ -2,6 +2,8 @@
 
 Boilerplate for Vite + Svelte + Tailwind setup in 2023
 
+Demo: https://svelte-tailwind-kit.web.app
+
 ## Setup
 
 ```sh
