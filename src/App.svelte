@@ -1,46 +1,21 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
+  import logo from './assets/logo.svg' 
   import Counter from './lib/Counter.svelte'
 </script>
 
-<main>
+<main class="items-center justify-items-center grid w-full gap-4 mt-[20vh]">
   <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+    <a href="https://github.com/uac-nhan-nguyen" target="_blank" rel="noreferrer"> 
+      <img src={logo} class="h-40" alt="N Logo" />
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
+  <h1 class="text-3xl">
+    <a href='https://svelte.dev/docs' target="_blank">Svelte</a>
+    +
+    <a href='https://tailwindcss.com/docs/guides/sveltekit' target="_blank">Tailwind</a>
+  </h1>
 
   <div class="card">
-    <Counter />
+    <Counter className="border-2 border-black rounded-lg px-4 py-1 hover:bg-slate-200 duration-100" />
   </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
 </main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
