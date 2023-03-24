@@ -1,0 +1,1 @@
+export type MenuItemType = [string, string?, MenuItemType[]?];
