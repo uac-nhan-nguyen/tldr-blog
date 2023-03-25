@@ -11,13 +11,16 @@
       ]],
       ['demo', null, [
         ['markdown', '/markdown']
+      ]],
+      ['templates', null, [
+        ['Privacy Policy collections', '/privacy-policy-collections']
       ]]
     ]
 </script>
 
 <Router>
   <header>
-    <Sidebar menus={menus}/>
+    <Sidebar title={'tldr'} menus={menus}/>
   </header>
 
   <main>
