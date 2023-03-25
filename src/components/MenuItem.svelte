@@ -1,26 +1,55 @@
 <script context="module" lang="ts">
-  export type MenuItemType = [string, string?, MenuItemType[]?];
+  export type MenuItemType = [
+    string,
+    string?,
+    MenuItemType[]?,
+    {
+      hide?: boolean;
+    }?
+  ];
+
+  export const getSelectedMenuItem = (
+    menus: MenuItemType[],
+    path: string
+  ): MenuItemType | null => {
+    const found = menus.find((i) => i[1] === path);
+    if (found) return found;
+
+    for (let i = 0; i < menus.length; i++) {
+      const menu = menus[i];
+      const found = menu[2] && getSelectedMenuItem(menu[2], path);
+      if (found) return found;
+    }
+    return null;
+  };
 </script>
 
 <script lang="ts">
   import { Router, Route, Link } from "svelte-navigator";
-  type MenuItemType = [string, string?, MenuItemType[]?];
 
   export let item: MenuItemType;
   export let level: number = 0;
+  export let selectedItem: MenuItemType | undefined;
 </script>
 
-<div style="padding-left: {level * 12}px;">
+<div class='grid' style="padding-left: {level * 12}px;">
   {#if item[1]}
-    <Link class="cursor-pointer hover:font-[700] duration-100" to={item[1]}
-      >{item[0]}</Link
+    <Link
+      class="cursor-pointer hover:font-[700] 
+      text-black
+      no-underline
+    py-1 px-2
+    duration-100 {selectedItem === item ? 'bg-slate-300' : 'bg-white'}"
+      to={item[1]}>{item[0]}</Link
     >
   {:else}
-    <div class="">{item[0]}</div>
+    <div class="text-slate-400">{item[0]}</div>
   {/if}
   {#if item[2]}
+  <div class="grid">
     {#each item[2] as menu}
-      <svelte:self item={menu} level={level + 1} />
+      <svelte:self item={menu} level={level + 1} {selectedItem} />
     {/each}
+  </div>
   {/if}
 </div>

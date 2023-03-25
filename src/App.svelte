@@ -1,15 +1,15 @@
 <script lang="ts">
-    import { Router, Route} from "svelte-navigator";
+    import { Router, Route, useLocation} from "svelte-navigator";
     import type { MenuItemType } from "./components/MenuItem.svelte";
     import Sidebar from "./components/Sidebar.svelte";
     import MarkdownPage from "./pages/MarkdownPage.svelte";
     import SettingsPage from "./pages/SettingsPage.svelte";
     import TimerPage from "./pages/TimerPage.svelte";
 
+
     const menus : MenuItemType[] = [
       ['apps', null, [
-        ['settings', '/settings'],
-        ['timer', '/timer']
+        ['timer', '/timer',,{hide:true}]
       ]],
       ['demo', null, [
         ['markdown', '/markdown']
@@ -21,11 +21,11 @@
 </script>
 
 <Router>
-  <header>
-    <Sidebar title={'tldr'} menus={menus}/>
+  <header class="fixed top-0 left-0 w-[200px]">
+    <Sidebar title={'tl;dr;'} menus={menus}/>
   </header>
 
-  <main>
+  <main class="ml-[200px]">
 
     <Route path="/"> <h3>Home</h3> </Route>
 
