@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+  export type MenuItemType = [string, string?, MenuItemType[]?];
+</script>
+
 <script lang="ts">
   import { Router, Route, Link } from "svelte-navigator";
   type MenuItemType = [string, string?, MenuItemType[]?];

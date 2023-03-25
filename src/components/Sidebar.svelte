@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { MenuItemType } from "./MenuItem";
-  import MenuItem from "./MenuItem.svelte";
+  import MenuItem, {type MenuItemType} from "./MenuItem.svelte";
 
   export let menus: MenuItemType[];
   export let title: string;
