@@ -1,0 +1,1 @@
+https://github.com/progfay/shields-with-icon/blob/master/Snippets.md

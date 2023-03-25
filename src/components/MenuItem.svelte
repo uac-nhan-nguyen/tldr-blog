@@ -32,24 +32,25 @@
   export let selectedItem: MenuItemType | undefined;
 </script>
 
-<div class='grid' style="padding-left: {level * 12}px;">
+<div class="grid ">
   {#if item[1]}
     <Link
       class="cursor-pointer hover:font-[700] 
-      text-black
-      no-underline
-    py-1 px-2
-    duration-100 {selectedItem === item ? 'bg-slate-300' : 'bg-white'}"
+      text-[10px] sm:text-lg
+      {level > 0 ? "pl-[4px] sm:pl-[8px]" : ""}
+      text-black no-underline py-1 px-2 duration-100 
+      {selectedItem === item ? 'bg-slate-300' : 'bg-white'}"
       to={item[1]}>{item[0]}</Link
     >
   {:else}
-    <div class="text-slate-400">{item[0]}</div>
+    <!-- Title -->
+    <div class="text-[14px] sm:text-sm text-slate-400">{item[0]}</div>
   {/if}
   {#if item[2]}
-  <div class="grid">
-    {#each item[2] as menu}
-      <svelte:self item={menu} level={level + 1} {selectedItem} />
-    {/each}
-  </div>
+    <div class="grid">
+      {#each item[2] as menu}
+        <svelte:self item={menu} level={level + 1} {selectedItem} />
+      {/each}
+    </div>
   {/if}
 </div>

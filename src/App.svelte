@@ -12,22 +12,22 @@
         ['timer', '/timer',,{hide:true}]
       ]],
       ['demo', null, [
-        ['markdown', '/markdown']
+        // ['markdown', '/markdown']
       ]],
-      ['templates', null, [
-        ['Privacy Policy collections', '/privacy-policy-collections']
+      ['toolkits', null, [
+        // ['Privacy Policy collections', '/privacy-policy-collections']
       ]]
     ]
 </script>
 
 <Router>
-  <header class="fixed top-0 left-0 w-[200px]">
-    <Sidebar title={'tl;dr;'} menus={menus}/>
+  <header class="fixed top-0 left-0 w-[100px] md:w-[200px]">
+    <Sidebar title={'tl.dr.'} menus={menus}/>
   </header>
 
-  <main class="ml-[200px]">
+  <main class="ml-[100px] md:ml-[200px] pl-4 pr-4">
 
-    <Route path="/"> <h3>Home</h3> </Route>
+    <Route path="/"> <MarkdownPage url='/home.md'/> </Route>
 
     <Route path="settings"> <SettingsPage/></Route>
     <Route path="markdown"> <MarkdownPage url='/hello.md'/> </Route>
