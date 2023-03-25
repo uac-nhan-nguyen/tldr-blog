@@ -1,9 +1,33 @@
 <script lang="ts">
-  import logo from './assets/logo.svg' 
-    import Sidebar from './components/Sidebar.svelte';
-  import Counter from './lib/Counter.svelte'
+    import { Router, Route, Link } from "svelte-navigator";
+    import type { MenuItemType } from "./components/MenuItem";
+    import Sidebar from "./components/Sidebar.svelte";
+    import MarkdownPage from "./pages/MarkdownPage.svelte";
+    import TimerPage from "./pages/TimerPage.svelte";
+
+    const menus : MenuItemType[] = [
+      ['apps', null, [
+        ['timer', '/timer']
+      ]],
+      ['demo', null, [
+        ['markdown', '/markdown']
+      ]]
+    ]
 </script>
 
-<main class="">
-  <Sidebar/>
-</main>
+<Router>
+  <header>
+    <Sidebar menus={menus}/>
+  </header>
+
+  <main>
+
+    <Route path="/">
+      <h3>Home</h3>
+    </Route>
+
+    <Route path="markdown"> <MarkdownPage url='/hello.md'/> </Route>
+    <Route path="timer"><TimerPage/></Route>
+
+  </main>
+</Router>
