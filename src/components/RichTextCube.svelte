@@ -1,7 +1,13 @@
 <script lang="ts">
   // Start: 26-03-2023 15:51
 
+  import {onMount} from 'svelte'
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
   export let className = "";
+  export let focusClass = "";
   export let minWidth = 40;
   export let stepWidth = 1;
   export let editable = false;
@@ -17,7 +23,17 @@
   let minW = 1;
 
   // true so that it would render the initial content
-  let focus = true;
+  let isFocus = true;
+
+
+
+  onMount(() => {
+    isFocus = false;
+  })
+
+  $: {
+    dispatch('focus', isFocus)
+  }
 
   $: {
     if (!content) content = "&nbsp;";
@@ -33,11 +49,11 @@
 </script>
 
 {#if editable}
-  <div class="w-min {className}" style="min-width: {minW}px;">
+  <div class="w-min {className} {isFocus ? focusClass : ''}" style="min-width: {minW}px;">
     <div
-      class="outline-none"
-      on:focus={() => (focus = true)}
-      on:blur={() => (focus = false)}
+      class="outline-none "
+      on:focus={() => (isFocus = true)}
+      on:blur={() => (isFocus = false)}
       contenteditable="true"
       bind:innerHTML={content}
       bind:this={node}
@@ -63,7 +79,7 @@
     <div contenteditable="false" bind:innerHTML={content} />
   </div>
 {/if}
-{#if focus}
+{#if isFocus}
   <div
     class="w-min {className} fixed opacity-0 pointer-events-none"
     bind:clientHeight={height}

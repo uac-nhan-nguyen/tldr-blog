@@ -3,6 +3,7 @@
 </script>
 
 <div class="grid justify-items-start">
+  <TimerButton id="HomePage" />
   <section>
     <h1 class="tracking-wider">Too Long<span class="text-red-600">.</span> Don't Read</h1>
 
@@ -18,7 +19,6 @@
     />
   </a>
 
-  <TimerButton id="HomePage" />
 </div>
 
 <style>

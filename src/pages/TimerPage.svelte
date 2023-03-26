@@ -18,6 +18,12 @@
   let state: "Stopped" | "Running" = "Stopped";
   let diff = Date.now() - start;
   let format: string = "mm:ss";
+  let now = Date.now()
+
+  $:{
+    diff = now - start;
+    format = diff < ONE_HOUR ? "mm:ss" : "HH:mm:ss";
+  }
 
   const restart = () => {
     const goal = Date.now();
@@ -28,8 +34,7 @@
   };
 
   setInterval(() => {
-    diff = Date.now() - start;
-    format = diff < ONE_HOUR ? "mm:ss" : "HH:mm:ss";
+    now = Date.now()
   }, 100);
 </script>
 

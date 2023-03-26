@@ -33,7 +33,7 @@
     },
   ];
 
-  const className = "border-solid border-1 p-1";
+  const className = "border-solid border-2 p-1";
   const editableClass = "border-dashed";
 
   $: {
