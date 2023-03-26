@@ -35,12 +35,13 @@
 <div class="grid ">
   {#if item[1]}
     <Link
-      class="cursor-pointer hover:font-[700] 
+      class="cursor-pointer hover:font-[600] md:hover:font-[700] 
+      tracking-tight
       text-[10px] sm:text-lg
       {level > 0 ? "pl-[4px] sm:pl-[8px]" : ""}
       text-black no-underline py-1 px-2 duration-100 
       {selectedItem === item ? 'bg-slate-300' : 'bg-white'}"
-      to={item[1]}>{item[0]}</Link
+      to={item[1]}>{selectedItem === item ? '.' : ''}{item[0]}</Link
     >
   {:else}
     <!-- Title -->

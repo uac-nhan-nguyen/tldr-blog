@@ -3,7 +3,6 @@
   import MenuItem, { getSelectedMenuItem, type MenuItemType } from "./MenuItem.svelte";
 
   export let menus: MenuItemType[];
-  export let title: string;
   let selected: MenuItemType | undefined;
 
   let hide = false;
@@ -30,9 +29,11 @@
   }
 </style>
 
-<div class="pl-1 duration-100 {hide?'opacity-20':''}">
+<div class="pl-1 duration-100 {hide?'opacity-30':''}">
   <Link class="no-underline text-black " to="/">
-    <h1 class="text-[32px] md:text-[48px] font-[600] m-0">{title}</h1>
+    <h1 class="text-[32px] sm:text-[48px] font-[600] m-0">
+tl<span class="text-red-600">.</span>dr
+    </h1>
   </Link>
   <nav>
     {#each menus as menu}
