@@ -1,7 +1,7 @@
 <script lang="ts">
   // Start: 26-03-2023 15:51
 
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
   import { isValidHttpUrl } from "../utils/common";
 
@@ -17,20 +17,36 @@
   export let textOutput = "";
 
   let node;
-
   let height = 0;
   let width = 0;
-
   let minW = 1;
+  let holdingMeta = false;
 
   // true so that it would render the initial content
   let isFocus = true;
 
   const NBSP = "&nbsp;";
 
+  // const handleDocKeydown = (e) => {
+  //   if (e.key === "Meta") {
+  //     holdingMeta = true;
+  //   }
+  // };
+  // const handleDocKeyup = (e) => {
+  //   if (e.key === "Meta") {
+  //     holdingMeta = false;
+  //   }
+  // };
+
   onMount(() => {
     isFocus = false;
+
+    // document.addEventListener("keyup", handleDocKeyup);
   });
+
+  // onDestroy(() => {
+  //   document.removeEventListener("keyup", handleDocKeyup);
+  // });
 
   $: {
     dispatch("focus", isFocus);
@@ -87,7 +103,7 @@
               document.execCommand(
                 "insertHTML",
                 true,
-                `<a class="font-bold underline text-blue-500" href="${text}" target="_blank">${selectedText}</a>`
+                `<a onmousedown="window.open(this.href, this.target)" class="font-bold underline text-blue-500 cursor-pointer" href="${text}" target="_blank">${selectedText}</a>`
               );
               return;
             }
@@ -97,10 +113,18 @@
         document.execCommand("insertText", true, text);
       }}
       on:keydown={(e) => {
-        // console.log("KEYPRESS", e);
-        if (e.key === 'b' && e.metaKey) {
+        console.log("KEYDOWN", e);
+        if (e.key === "b" && e.metaKey) {
           e.preventDefault();
           document.execCommand("bold", true);
+        } else if (e.key === "Meta") {
+          holdingMeta = true;
+        }
+      }}
+      on:keyup={(e) => {
+        console.log("KEYUP", e);
+        if (e.key === "Meta") {
+          holdingMeta = false;
         }
       }}
       on:input={(e) => {
