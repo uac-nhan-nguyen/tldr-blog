@@ -96,6 +96,16 @@
 
         document.execCommand("insertText", true, text);
       }}
+      on:keydown={(e) => {
+        // console.log("KEYPRESS", e);
+        if (e.key === 'b' && e.metaKey) {
+          e.preventDefault();
+          document.execCommand("bold", true);
+        }
+      }}
+      on:input={(e) => {
+        // console.log("INPUT", e);
+      }}
     />
   </div>
 {:else}
