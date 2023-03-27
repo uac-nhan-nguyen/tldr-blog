@@ -1,7 +1,7 @@
 <script lang="ts">
   // Start: 26-03-2023 15:51
 
-  import { onDestroy, onMount } from "svelte";
+  import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
   import { isValidHttpUrl } from "../utils/common";
 
@@ -9,6 +9,7 @@
 
   export let className = "";
   export let focusClass = "";
+  export let classView = "";
   export let minWidth = 40;
   export let stepWidth = 1;
   export let editable = false;
@@ -52,6 +53,7 @@
     dispatch("focus", isFocus);
   }
 
+  const A_ONMOUSEDOWN = 'onmousedown="window.open(this.href,this.target)"';
   $: {
     if (!content) content = "";
 
@@ -82,7 +84,6 @@
         e.preventDefault();
 
         let text = e.clipboardData.getData("text");
-        console.log(text, isValidHttpUrl(text));
 
         // console.log("PASTE", text);
 
@@ -113,7 +114,7 @@
         document.execCommand("insertText", true, text);
       }}
       on:keydown={(e) => {
-        console.log("KEYDOWN", e);
+        // console.log("KEYDOWN", e);
         if (e.key === "b" && e.metaKey) {
           e.preventDefault();
           document.execCommand("bold", true);
@@ -122,7 +123,7 @@
         }
       }}
       on:keyup={(e) => {
-        console.log("KEYUP", e);
+        // console.log("KEYUP", e);
         if (e.key === "Meta") {
           holdingMeta = false;
         }
@@ -133,7 +134,10 @@
     />
   </div>
 {:else}
-  <div class="w-min {className}" style="min-width: {minW}px;">
+  <div
+    class="w-min {className} {classView}"
+    style="min-width: {minW}px;"
+  >
     <div
       class="outline-none whitespace-pre-wrap"
       contenteditable="false"

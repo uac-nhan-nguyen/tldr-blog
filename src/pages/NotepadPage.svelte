@@ -36,53 +36,12 @@
     }
   };
 
-  const contents: {
-    content: string;
-    editable?: boolean;
-    moreClassName?: string;
-  }[] = [
-    ...[
-      "Add dot grid",
-      "Delete group",
-      "Drag position note on grid",
-      "Drag to order group",
-    ].map((i) => {
-      return {
-        content: `<b>TODO:</b> ${i}`,
-        moreClassName: "font-mono text-sm leading-4",
-      };
-    }),
-    ...[
-      "Drag to order note",
-      "Add button to add note",
-      "Store notes in local storage",
-      "Delete note",
-    ].map((i) => {
-      return {
-        content: `<b>Done</b> ${i}`,
-        moreClassName: "font-mono text-sm leading-4 opacity-30",
-      };
-    }),
-  ];
-
   const className = "border-solid border-2 p-1";
   const editableClass = "border-dashed";
 </script>
 
 <div class="grid justify-items-start gap-4">
   <TimerButton id="notepad" />
-  <div class="flex items-start gap-2 flex-wrap">
-    {#each contents as item}
-      <RichTextCube
-        className="{className} {item.editable
-          ? editableClass
-          : ''} {item.moreClassName ?? ''}"
-        editable={item.editable}
-        content={item.content}
-        stepWidth={4}
-      />
-    {/each}
-  </div>
 
   {#each _data.groups2 as group}
     <div>

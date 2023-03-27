@@ -79,9 +79,8 @@
   <div class="flex flex-wrap items-start gap-2">
     {#each _data.notes as note, itemIndex (note.id)}
       <div
-        class="border-solid border-2 bg-white {note.focus
-          ? 'border-dashed'
-          : ''}"
+        class="border-solid border-2 bg-white 
+        {note.focus ? 'border-dashed' : ''}"
         on:dragend={(e) => {
           dragging = false;
         }}
@@ -110,7 +109,7 @@
           }}
         />
         <RichTextCube
-          className="p-1"
+          className="p-1 "
           on:focus={(e) => (note.focus = e.detail)}
           editable={true}
           bind:content={note.content}

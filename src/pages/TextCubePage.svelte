@@ -9,7 +9,7 @@
   const contents: {
     content: string;
     editable?: boolean;
-    moreClassName?: string; 
+    moreClassName?: string;
   }[] = [
     {
       content:
@@ -21,7 +21,8 @@
     },
     {
       content:
-        'With clickable <a target="_blank" href="https://github.com/uac-nhan-nguyen">link</a>',
+        'With clickable <a onmousedown="window.open(this.href,this.target)" class="text-blue-500 cursor-pointer font-bold" target="_blank" href="https://github.com/uac-nhan-nguyen">link</a>',
+      editable: true,
     },
     {
       content: "<b>TODO:</b> paste url on selection",
@@ -45,7 +46,9 @@
   <div class="flex items-start gap-2 flex-wrap">
     {#each contents as item}
       <RichTextCube
-        className='{className} {item.editable ? editableClass : ''} {item.moreClassName ?? ''}'
+        className="{className} {item.editable
+          ? editableClass
+          : ''} {item.moreClassName ?? ''}"
         editable={item.editable}
         content={item.content}
         stepWidth={4}
@@ -55,7 +58,7 @@
 
   <div class="flex flex-wrap gap-2">
     <RichTextCube
-      className='{className} {editableClass}'
+      className="{className} {editableClass}"
       editable={true}
       bind:textOutput={text}
       bind:content
@@ -63,7 +66,7 @@
     />
 
     <RichTextCube
-      className='{className} {editableClass}'
+      className="{className} {editableClass}"
       editable={true}
       bind:textOutput={text}
       bind:content
