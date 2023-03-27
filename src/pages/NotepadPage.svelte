@@ -41,13 +41,19 @@
     editable?: boolean;
     moreClassName?: string;
   }[] = [
-    ...["Add dot grid", "Delete group", "Drag position note on grid", "Drag to order note", "Drag to order group"].map((i) => {
+    ...[
+      "Add dot grid",
+      "Delete group",
+      "Drag position note on grid",
+      "Drag to order group",
+    ].map((i) => {
       return {
         content: `<b>TODO:</b> ${i}`,
         moreClassName: "font-mono text-sm leading-4",
       };
     }),
     ...[
+      "Drag to order note",
       "Add button to add note",
       "Store notes in local storage",
       "Delete note",
@@ -87,7 +93,10 @@
     </div>
   {/each}
 
-  <button class="px-4 py-2 border-none hover:bg-slate-200 bg-slate-100 cursor-pointer" on:click={() => (showModal = true)}>Add new group ...</button>
+  <button
+    class="px-4 py-2 border-none hover:bg-slate-200 bg-slate-100 cursor-pointer"
+    on:click={() => (showModal = true)}>Add new group ...</button
+  >
 
   <Modal bind:showModal className="border-0">
     <div class="grid gap-2">

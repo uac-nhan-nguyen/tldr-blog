@@ -2,8 +2,6 @@
   import { Router, Route, useLocation } from "svelte-navigator";
   import type { MenuItemType } from "./components/MenuItem.svelte";
   import Sidebar from "./components/Sidebar.svelte";
-  import TextCube from "./components/RichTextCube.svelte";
-  import TimerButton from "./components/TimerButton.svelte";
   import HomePage from "./pages/HomePage.svelte";
   import MarkdownPage from "./pages/MarkdownPage.svelte";
   import NotFoundPage from "./pages/NotFoundPage.svelte";
@@ -19,6 +17,12 @@
       [
         ["notepad", "/notepad", ,],
         ["timer", "/timer", , { hide: true }],
+      ],
+    ],
+    [
+      "apps",
+      null,
+      [
         ["textcube", "/text-cube", ,],
       ],
     ],
