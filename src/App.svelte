@@ -46,7 +46,6 @@
 
   <main class="ml-[100px] sm:ml-[120px] md:ml-[200px] pl-4 pr-4 ">
     <Route path="/"><HomePage /></Route>
-
     <Route path="settings"><SettingsPage /></Route>
     <Route path="markdown"><MarkdownPage url="/hello.md" /></Route>
     <Route path="timer"><TimerPage /></Route>

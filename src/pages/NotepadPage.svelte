@@ -41,7 +41,7 @@
     editable?: boolean;
     moreClassName?: string;
   }[] = [
-    ...["Add dot grid", "Delete group", "Drag to order"].map((i) => {
+    ...["Add dot grid", "Delete group", "Drag position note on grid", "Drag to order note", "Drag to order group"].map((i) => {
       return {
         content: `<b>TODO:</b> ${i}`,
         moreClassName: "font-mono text-sm leading-4",
@@ -59,7 +59,7 @@
     }),
   ];
 
-  const className = "border-solid border-1 p-1";
+  const className = "border-solid border-2 p-1";
   const editableClass = "border-dashed";
 </script>
 
@@ -113,10 +113,3 @@
     </div>
   </Modal>
 </div>
-
-<style>
-  h1 {
-    margin: 0;
-    font-size: 28px;
-  }
-</style>

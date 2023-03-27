@@ -1,8 +1,8 @@
 export const getLocalStorageJson = <T>(key: string, init: T): T | null => {
   const text = localStorage.getItem(key);
-  if (!text) return null;
+  if (!text) return init;
   const data = JSON.parse(text);
-  if (data == null) return null;
+  if (data == null) return init;
   return {
     ...init,
     ...data,

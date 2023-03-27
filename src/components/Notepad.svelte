@@ -64,13 +64,13 @@
   <div class="flex flex-wrap items-start gap-2">
     {#each _data.notes as note, itemIndex}
       <div
-        class="border-solid border-1 bg-white {note.focus
+        class="border-solid border-2 bg-white {note.focus
           ? 'border-dashed'
           : ''}"
         on:drop={(e) => handleDrop("insert", e)}
       >
         <div
-          class="bg-slate-200 h-[10px] cursor-grab"
+          class="bg-slate-100 h-[8px] cursor-grab"
           draggable="true"
           on:dragstart={(e) => {
             const data = { itemIndex };
@@ -103,7 +103,7 @@
 grid items-center p-4
       duration-200
       {dragging ? deleteDragging ? 'opacity-100' : 'opacity-70' : 'opacity-0'}
-      {deleteDragging ? 'font-[600] border-1' : ''}
+      {deleteDragging ? 'font-[600] border-2' : ''}
       "
       on:dragenter={(e) => {
         // need this to make valid dropzone
