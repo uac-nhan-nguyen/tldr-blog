@@ -11,7 +11,7 @@
 
     <p>Writter in svelte + typescript + markdown</p>
   </section>
-  <a href="https://github.com/uac-nhan-nguyen" target="_blank">
+  <a href="https://github.com/uac-nhan-nguyen/tldr-blog" target="_blank">
     <img
       alt="github badge"
       height="32"

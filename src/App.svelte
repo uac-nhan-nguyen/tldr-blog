@@ -20,7 +20,7 @@
       ],
     ],
     [
-      "apps",
+      "components",
       null,
       [
         ["textcube", "/text-cube", ,],
