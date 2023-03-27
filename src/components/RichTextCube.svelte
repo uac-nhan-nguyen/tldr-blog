@@ -3,6 +3,7 @@
 
   import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
+  import { isValidHttpUrl } from "../utils/common";
 
   const dispatch = createEventDispatcher();
 
@@ -25,7 +26,7 @@
   // true so that it would render the initial content
   let isFocus = true;
 
-  const NBSP = "&nbsp;"
+  const NBSP = "&nbsp;";
 
   onMount(() => {
     isFocus = false;
@@ -65,21 +66,45 @@
         e.preventDefault();
 
         let text = e.clipboardData.getData("text");
+        console.log(text, isValidHttpUrl(text));
 
         // console.log("PASTE", text);
 
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
+        // const selection = window.getSelection();
+        // if (!selection.rangeCount) return;
         // selection.deleteFromDocument();
         // selection.getRangeAt(0).insertNode(document.createTextNode(text));
         // selection.collapseToEnd();
+
+        // convert selection to a link
+        if (isValidHttpUrl(text)) {
+          const selection = window.getSelection();
+          if (selection.rangeCount) {
+            // rangeCount is usually 1
+            const selectedText = selection.getRangeAt(0).toString();
+
+            if (selectedText) {
+              document.execCommand(
+                "insertHTML",
+                true,
+                `<a class="font-bold underline text-blue-500" href="${text}" target="_blank">${selectedText}</a>`
+              );
+              return;
+            }
+          }
+        }
+
         document.execCommand("insertText", true, text);
       }}
     />
   </div>
 {:else}
   <div class="w-min {className}" style="min-width: {minW}px;">
-    <div class="outline-none whitespace-pre-wrap" contenteditable="false" bind:innerHTML={content} />
+    <div
+      class="outline-none whitespace-pre-wrap"
+      contenteditable="false"
+      bind:innerHTML={content}
+    />
   </div>
 {/if}
 
@@ -90,6 +115,10 @@
     bind:clientHeight={height}
     bind:clientWidth={width}
   >
-    <div class="outline-none whitespace-pre-wrap" contenteditable="false" bind:innerHTML={content} />
+    <div
+      class="outline-none whitespace-pre-wrap"
+      contenteditable="false"
+      bind:innerHTML={content}
+    />
   </div>
 {/if}
