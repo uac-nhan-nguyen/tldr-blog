@@ -25,6 +25,8 @@
   // true so that it would render the initial content
   let isFocus = true;
 
+  const NBSP = "&nbsp;"
+
   onMount(() => {
     isFocus = false;
   });
@@ -34,7 +36,7 @@
   }
 
   $: {
-    if (!content) content = "&nbsp;";
+    if (!content) content = "";
 
     const area = Math.max(minWidth, width) * height;
     const squareW = Math.sqrt(area);
@@ -48,11 +50,11 @@
 
 {#if editable}
   <div
-    class="w-min {className} {isFocus ? focusClass : ''}"
+    class="w-min duration-75 {className} {isFocus ? focusClass : ''}"
     style="min-width: {minW}px;"
   >
     <div
-      class="outline-none "
+      class="outline-none whitespace-pre-wrap"
       on:focus={() => (isFocus = true)}
       on:blur={() => (isFocus = false)}
       contenteditable="true"
@@ -77,7 +79,7 @@
   </div>
 {:else}
   <div class="w-min {className}" style="min-width: {minW}px;">
-    <div contenteditable="false" bind:innerHTML={content} />
+    <div class="outline-none whitespace-pre-wrap" contenteditable="false" bind:innerHTML={content} />
   </div>
 {/if}
 
@@ -88,6 +90,6 @@
     bind:clientHeight={height}
     bind:clientWidth={width}
   >
-    <div contenteditable="false" bind:innerHTML={content} />
+    <div class="outline-none whitespace-pre-wrap" contenteditable="false" bind:innerHTML={content} />
   </div>
 {/if}

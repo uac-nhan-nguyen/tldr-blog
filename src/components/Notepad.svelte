@@ -1,40 +1,44 @@
 <script lang="ts">
   import RichTextCube from "../components/RichTextCube.svelte";
+  import { generateId } from "../utils/common";
+  import { getLocalStorageJson } from "../utils/LocalStorage";
 
   export let id: string;
 
   type Note = {
+    id: string;
     content: string;
     focus?: boolean;
   };
   type NotepadData = {
     notes: Note[];
   };
-  const initData: NotepadData = {
-    notes: [],
-  };
-
   const storageId = `notepad-${id}`;
-  let _data: NotepadData;
+  let _data: NotepadData = getLocalStorageJson(
+    storageId,
+    {
+      notes: [],
+    },
+    (e) => {
+      e.notes = e.notes.map((i) => {
+        if (!i.id) i.id = generateId();
+        return i;
+      });
+
+      return e;
+    }
+  );
+
   let deleteDragging: boolean = false;
   let droppingOnNote: number = -1;
   let dragging: boolean = false;
-
-  try {
-    _data = JSON.parse(localStorage.getItem(storageId));
-    if (!_data) {
-      _data = initData;
-    }
-  } catch (e) {
-    console.error(e);
-    _data = initData;
-  }
 
   const addNote = () => {
     _data.notes = [
       ..._data.notes,
       {
-        content: `Note ${_data.notes.length + 1}...`,
+        id: generateId(),
+        content: `Note ${_data.notes.length + 1}`,
       },
     ];
   };
@@ -65,8 +69,6 @@
         _data.notes.splice(targetIndex, 0, ...moved);
         _data.notes = _data.notes;
       }
-
-      console.log({action, eventData, targetIndex});
     } catch (e) {
       console.error("Invalid data", event.dataTransfer.getData("data"));
     }
@@ -75,7 +77,7 @@
 
 <div class="grid gap-2 justify-items-start">
   <div class="flex flex-wrap items-start gap-2">
-    {#each _data.notes as note, itemIndex}
+    {#each _data.notes as note, itemIndex (note.id)}
       <div
         class="border-solid border-2 bg-white {note.focus
           ? 'border-dashed'
