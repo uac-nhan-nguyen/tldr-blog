@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { HYPERLINK_WRAP_COLOR, TRANSFORM_URL } from "../components/RichTextCube";
   import RichTextCube from "../components/RichTextCube.svelte";
   import TimerButton from "../components/TimerButton.svelte";
 
@@ -28,6 +29,17 @@
     },
     {
       content: 'Paste default to text only. Paste from note will keep html styles.',
+      editable: true,
+    },
+    {
+      content: 'Paste link into inline tag. <br><br>Try copy the below link and paste it <br><b>https://github.com/uac-nhan-nguyen/tldr-blog</b>',
+      editable: true,
+    },
+    {
+      content: `Supported tags:<br>${[
+        'Jira: ' + TRANSFORM_URL('https://uac-cloud.atlassian.net/browse/TICKET-650'),
+        'Github: ' + TRANSFORM_URL('https://github.com/uac-nhan-nguyen/tldr-blog')
+      ].join('<br>')}`,
       editable: true,
     },
   ];

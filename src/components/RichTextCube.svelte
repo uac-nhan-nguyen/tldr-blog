@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
   import { isValidHttpUrl } from "../utils/common";
+  import { A_ONMOUSEDOWN, HYPERLINK_WRAP, TRANSFORM_URL } from "./RichTextCube";
 
   const dispatch = createEventDispatcher();
 
@@ -24,9 +25,6 @@
 
   // true so that it would render the initial content
   let isFocus = true;
-
-  const NBSP = "&nbsp;";
-  const A_ONMOUSEDOWN = 'onmousedown="window.open(this.href,this.target)"';
 
   const fixContent = () => {
     content = content
@@ -100,7 +98,7 @@
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/paste_event
         e.preventDefault();
 
-        const text = e.clipboardData.getData("text");
+        let text = e.clipboardData.getData("text");
         // const textHtml = e.clipboardData.getData("text/html");
 
         // console.log(text);
@@ -112,25 +110,37 @@
         // selection.getRangeAt(0).insertNode(document.createTextNode(text));
         // selection.collapseToEnd();
 
+        const isCopiedFromApp = text.startsWith("<x></x>");
+        if (isCopiedFromApp) {
+          text = text.replace("<x></x>", "");
+        }
+
         // convert selection to a link
         if (isValidHttpUrl(text)) {
+          const url = text;
           const selection = window.getSelection();
-          if (selection.rangeCount) {
+          const selectedText =
+            selection.rangeCount && selection.getRangeAt(0).toString();
+
+          const transformed = TRANSFORM_URL(url);
+
+          if (selectedText) {
             // rangeCount is usually 1
-            const selectedText = selection.getRangeAt(0).toString();
 
             if (selectedText) {
               document.execCommand(
                 "insertHTML",
                 true,
-                `<a onmousedown="window.open(this.href, this.target)" class="font-bold underline text-blue-500 cursor-pointer" href="${text}" target="_blank">${selectedText}</a>`
+                HYPERLINK_WRAP(url, selectedText)
               );
               return;
             }
+          } else if (transformed) {
+            document.execCommand("insertHTML", true, transformed);
+            return;
           }
-        } else if (text.startsWith("<x></x>")) {
-          const trimHtml = text.replace("<x></x>", "");
-          document.execCommand("insertHTML", true, trimHtml);
+        } else if (isCopiedFromApp) {
+          document.execCommand("insertHTML", true, text);
           return;
         }
 
