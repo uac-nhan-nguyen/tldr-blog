@@ -66,6 +66,22 @@
   }
 
   const handleInput = (e) => {};
+
+  const copyRangeToClipboard = (range: Range) => {
+    const documentFragment = range.cloneContents();
+    const wrapDiv = document.createElement("div");
+    wrapDiv.append(document.createElement("x"));
+    wrapDiv.append(documentFragment);
+    // console.log("COPY", wrapDiv.innerHTML);
+
+    // const blob = new Blob([wrapDiv.innerHTML], { type: "text/html" });
+    // navigator.clipboard.write([
+    //   new ClipboardItem({
+    //     "text/html": blob,
+    //   }),
+    // ]);
+    navigator.clipboard.writeText(wrapDiv.innerHTML);
+  };
 </script>
 
 {#if editable}
@@ -84,9 +100,11 @@
         // https://developer.mozilla.org/en-US/docs/Web/API/Element/paste_event
         e.preventDefault();
 
-        let text = e.clipboardData.getData("text");
+        const text = e.clipboardData.getData("text");
+        // const textHtml = e.clipboardData.getData("text/html");
 
-        // console.log("PASTE", text);
+        // console.log(text);
+        // console.log(textHtml);
 
         // const selection = window.getSelection();
         // if (!selection.rangeCount) return;
@@ -110,18 +128,39 @@
               return;
             }
           }
+        } else if (text.startsWith("<x></x>")) {
+          const trimHtml = text.replace("<x></x>", "");
+          document.execCommand("insertHTML", true, trimHtml);
+          return;
         }
 
         document.execCommand("insertText", true, text);
       }}
       on:keydown={(e) => {
-        console.log("KEYDOWN", e);
+        // console.log("KEYDOWN", e);
         if (e.key === "b" && e.metaKey) {
           e.preventDefault();
           document.execCommand("bold", true);
         } else if (e.key === "Enter" && e.metaKey) {
           e.preventDefault();
           dispatch("shortcut", "cmd+enter");
+        } else if (e.metaKey && e.key === "c") {
+          const selection = window.getSelection();
+          const range = selection.rangeCount && selection.getRangeAt(0);
+
+          if (range && range.toString()) {
+            e.preventDefault();
+            copyRangeToClipboard(range);
+          }
+        } else if (e.metaKey && e.key === "x") {
+          const selection = window.getSelection();
+          const range = selection.rangeCount && selection.getRangeAt(0);
+
+          if (range && range.toString()) {
+            e.preventDefault();
+            copyRangeToClipboard(range);
+            document.execCommand("delete", true);
+          }
         } else if (e.key === "F1") {
           const selection = window.getSelection();
           const parent = selection.anchorNode.parentElement;

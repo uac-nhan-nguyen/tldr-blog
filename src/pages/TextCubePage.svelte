@@ -26,6 +26,10 @@
       content: `With clickable <a onmousedown="window.open(this.href,this.target)" class="text-blue-500 cursor-pointer font-bold" target="_blank" href="https://github.com/uac-nhan-nguyen/tldr-blog">link</a> on chrome. Or use ${SHORTCUT_WRAP('F1')} to open in edit mode`,
       editable: true,
     },
+    {
+      content: 'Paste default to text only. Paste from note will keep html styles.',
+      editable: true,
+    },
   ];
 
   const className = "border-solid border-2 p-1";
