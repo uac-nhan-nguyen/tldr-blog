@@ -13,8 +13,7 @@
   export let minWidth = 40;
   export let stepWidth = 1;
   export let editable = false;
-  export let content =
-    "This rich text block is editable and resizes itself to be as close to a square as possible";
+  export let content = "Rich text goes here";
   export let textOutput = "";
 
   let node;
@@ -27,20 +26,20 @@
   let isFocus = true;
 
   const NBSP = "&nbsp;";
+  const A_ONMOUSEDOWN = 'onmousedown="window.open(this.href,this.target)"';
 
-  // const handleDocKeydown = (e) => {
-  //   if (e.key === "Meta") {
-  //     holdingMeta = true;
-  //   }
-  // };
-  // const handleDocKeyup = (e) => {
-  //   if (e.key === "Meta") {
-  //     holdingMeta = false;
-  //   }
-  // };
+  const fixContent = () => {
+    content = content
+      .replaceAll(A_ONMOUSEDOWN, "")
+      .replaceAll("<a ", "<a " + A_ONMOUSEDOWN);
+  };
+
+  fixContent();
 
   onMount(() => {
-    isFocus = false;
+    setTimeout(() => {
+      isFocus = false;
+    }, 200);
 
     // document.addEventListener("keyup", handleDocKeyup);
   });
@@ -51,9 +50,11 @@
 
   $: {
     dispatch("focus", isFocus);
+    if (!isFocus) {
+      fixContent();
+    }
   }
 
-  const A_ONMOUSEDOWN = 'onmousedown="window.open(this.href,this.target)"';
   $: {
     if (!content) content = "";
 
@@ -114,10 +115,21 @@
         document.execCommand("insertText", true, text);
       }}
       on:keydown={(e) => {
-        // console.log("KEYDOWN", e);
+        console.log("KEYDOWN", e);
         if (e.key === "b" && e.metaKey) {
           e.preventDefault();
           document.execCommand("bold", true);
+        } else if (e.key === "Enter" && e.metaKey) {
+          e.preventDefault();
+          dispatch("shortcut", "cmd+enter");
+        } else if (e.key === "F1") {
+          const selection = window.getSelection();
+          const parent = selection.anchorNode.parentElement;
+          if (parent instanceof HTMLAnchorElement) {
+            window.open(parent.href, "_blank");
+          }
+
+          e.preventDefault();
         } else if (e.key === "Meta") {
           holdingMeta = true;
         }
@@ -134,10 +146,7 @@
     />
   </div>
 {:else}
-  <div
-    class="w-min {className} {classView}"
-    style="min-width: {minW}px;"
-  >
+  <div class="w-min {className} {classView}" style="min-width: {minW}px;">
     <div
       class="outline-none whitespace-pre-wrap"
       contenteditable="false"

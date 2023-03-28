@@ -6,6 +6,9 @@
     'This box is <b class="text-red-600">bounded two ways</b>. Changes in these two boxes results in <b>HTML and Text</b> updated';
   let text;
 
+  const SHORTCUT_WRAP = (text: string) =>
+    `<code class="border-1 border-solid rounded text-[12px] px-0.5 bg-red-100">${text}</code>`;
+
   const contents: {
     content: string;
     editable?: boolean;
@@ -13,24 +16,15 @@
   }[] = [
     {
       content:
-        "This <b>rich text block</b> resizes itself to be as close to a <b>&#9706; square</b> as possible",
+        "This <b>rich text editor</b> resizes itself to be as close to a <b>&#9706; square</b> as possible",
     },
     {
-      content: 'It is editable. <code class="bg-red-100">CMD+Z</code> to undo.',
+      content: `It is editable. ${SHORTCUT_WRAP('CMD+Z')} to undo.`,
       editable: true,
     },
     {
-      content:
-        'With clickable <a onmousedown="window.open(this.href,this.target)" class="text-blue-500 cursor-pointer font-bold" target="_blank" href="https://github.com/uac-nhan-nguyen">link</a>',
+      content: `With clickable <a onmousedown="window.open(this.href,this.target)" class="text-blue-500 cursor-pointer font-bold" target="_blank" href="https://github.com/uac-nhan-nguyen/tldr-blog">link</a> on chrome. Or use ${SHORTCUT_WRAP('F1')} to open in edit mode`,
       editable: true,
-    },
-    {
-      content: "<b>TODO:</b> paste url on selection",
-      moreClassName: "font-mono",
-    },
-    {
-      content: "<b>TODO:</b> some markdown support",
-      moreClassName: "font-mono",
     },
   ];
 

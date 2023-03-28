@@ -2,12 +2,12 @@
   import Button from "../components/Button.svelte";
   import Modal from "../components/Modal.svelte";
   import Notepad from "../components/Notepad.svelte";
-  import RichTextCube from "../components/RichTextCube.svelte";
   import TimerButton from "../components/TimerButton.svelte";
   import {
     getLocalStorageJson,
     setLocalStorageJson,
   } from "../utils/LocalStorage";
+  import { IconLock, IconLockOpen } from "@tabler/icons-svelte";
 
   let showModal = false;
   let newGroupName = "";
@@ -17,6 +17,7 @@
     groups2: {
       id: number;
       name: string;
+      locked?: boolean;
     }[];
   }>(storageId, {
     groups2: [],
@@ -31,24 +32,42 @@
           name,
         },
       ];
-      setLocalStorageJson(storageId, _data);
       showModal = false;
     }
   };
+
+  $: {
+    setLocalStorageJson(storageId, _data);
+  }
 
   const className = "border-solid border-2 p-1";
   const editableClass = "border-dashed";
 </script>
 
-<div class="grid justify-items-start gap-4">
+<div class="grid justify-items-start gap-4 pb-4">
   <TimerButton id="notepad" />
 
   {#each _data.groups2 as group}
     <div>
-      <div>
+      <div class="flex">
         <div class="text-lg">{group.name}</div>
+        {#if group.locked}
+          <button
+            class="cursor-pointer border-none bg-white "
+            on:click={() => (group.locked = false)}
+          >
+            <IconLock size={16}/>
+          </button>
+        {:else}
+          <button
+            class="cursor-pointer border-none bg-white "
+            on:click={() => (group.locked = true)}
+          >
+            <IconLockOpen size={16} />
+          </button>
+        {/if}
       </div>
-      <Notepad id={group.id.toString()} />
+      <Notepad id={group.id.toString()} lock={group.locked} />
     </div>
   {/each}
 

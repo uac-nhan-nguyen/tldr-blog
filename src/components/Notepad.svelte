@@ -4,6 +4,7 @@
   import { getLocalStorageJson } from "../utils/LocalStorage";
 
   export let id: string;
+  export let lock: boolean = false;
 
   type Note = {
     id: string;
@@ -34,13 +35,15 @@
   let dragging: boolean = false;
 
   const addNote = () => {
-    _data.notes = [
-      ..._data.notes,
-      {
-        id: generateId(),
-        content: `Note ${_data.notes.length + 1}`,
-      },
-    ];
+    if (!lock) {
+      _data.notes = [
+        ..._data.notes,
+        {
+          id: generateId(),
+          content: `Note ${_data.notes.length + 1}`,
+        },
+      ];
+    }
   };
 
   $: {
@@ -111,19 +114,29 @@
         <RichTextCube
           className="p-1 "
           on:focus={(e) => (note.focus = e.detail)}
-          editable={true}
+          editable={!lock}
           bind:content={note.content}
           stepWidth={4}
+          on:shortcut={(e) => {
+            switch (e.detail) {
+              case "cmd+enter":
+                addNote();
+                break;
+            }
+          }}
         />
       </div>
     {/each}
 
-    <button
-      class="border-dashed border-1 border-red-600 bg-white cursor-pointer hover:bg-red-100 w-[49px] h-[49px]"
-      on:click={addNote}>New note</button
-    >
-    <div
-      class="border-dashed border-1 border-red-600 bg-white cursor-pointer hover:bg-red-100 
+    {#if !lock}
+      <button
+        class="border-dashed border-1 border-red-600 bg-white cursor-pointer hover:bg-red-100 w-[49px] h-[49px]"
+        on:click={addNote}>New note</button
+      >
+    {/if}
+    {#if dragging}
+      <div
+        class="border-dashed border-1 border-red-600 bg-white cursor-pointer hover:bg-red-100 
       min-h-[50px]
       max-w-[60px]
 grid items-center p-4
@@ -131,21 +144,22 @@ grid items-center p-4
       {dragging ? (deleteDragging ? 'opacity-100' : 'opacity-70') : 'opacity-0'}
       {deleteDragging ? 'font-[600] border-2' : ''}
       "
-      on:dragenter={(e) => {
-        // need this to make valid dropzone
-        e.preventDefault();
-        deleteDragging = true;
-      }}
-      on:dragleave={(e) => {
-        deleteDragging = false;
-      }}
-      on:dragover={(e) => {
-        // need this to make valid dropzone
-        e.preventDefault();
-      }}
-      on:drop={(e) => handleDrop("delete", e)}
-    >
-      Drop here to delete
-    </div>
+        on:dragenter={(e) => {
+          // need this to make valid dropzone
+          e.preventDefault();
+          deleteDragging = true;
+        }}
+        on:dragleave={(e) => {
+          deleteDragging = false;
+        }}
+        on:dragover={(e) => {
+          // need this to make valid dropzone
+          e.preventDefault();
+        }}
+        on:drop={(e) => handleDrop("delete", e)}
+      >
+        Drop here to delete
+      </div>
+    {/if}
   </div>
 </div>
