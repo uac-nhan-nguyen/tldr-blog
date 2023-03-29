@@ -12,12 +12,6 @@
     selected = getSelectedMenuItem(menus, $location.pathname);
 
     hide = selected?.[3]?.hide;
-    if (selected?.[0]){
-      document.title = selected[0]
-    }
-    else {
-      document.title = "Too Long. Don't Read."
-    }
   }
 </script>
 

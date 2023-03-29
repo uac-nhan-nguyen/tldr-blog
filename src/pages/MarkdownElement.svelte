@@ -21,13 +21,17 @@
 {#if el instanceof HTMLPreElement}
   {#if source}
     <PrismWrapper
-      className="my-[14px] overflow-auto max-h-[30em]"
+      className="my-[14px] overflow-auto max-h-[30em]
+      text-[11px] sm:text-[12px]
+      border-solid border-1 border-neutral-300"
       {lang}
       {source}
     />
   {/if}
 {:else if el.tagName === "H1"}
-  <div class="flex items-baseline">
+  <div
+    class="flex items-baseline border-0 border-b-2 border-dashed border-neutral-600 mb-[8px]"
+  >
     <h1>
       {#each el.childNodes as child}
         <svelte:self el={child} />
@@ -36,7 +40,9 @@
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "H2"}
-  <div class="flex items-baseline">
+  <div
+    class="flex items-baseline border-0 border-b-1 border-solid border-neutral-300 mb-[8px]"
+  >
     <h2>
       {#each el.childNodes as child}
         <svelte:self el={child} />
@@ -73,18 +79,36 @@
   </div>
 {:else if el.tagName === "BR"}
   <br />
+{:else if el.tagName === "HR"}
+  <hr />
 {:else if el instanceof HTMLAnchorElement}
-  <a href={el.href} target="_blank">
+  <a
+    class="no-underline hover:underline text-blue-700"
+    href={el.href}
+    target="_blank"
+  >
     {#each el.childNodes as child}
       <svelte:self el={child} />
     {/each}
   </a>
-{:else if el.tagName === "P"}
-  <p>
+{:else if el instanceof HTMLParagraphElement}
+  <p align={el.align}>
     {#each el.childNodes as child}
       <svelte:self el={child} />
     {/each}
   </p>
+{:else if el.tagName === "STRONG"}
+  <strong>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </strong>
+{:else if el.tagName === "EM"}
+  <em>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </em>
 {:else if el.tagName === "OL"}
   <ol>
     {#each el.childNodes as child}
@@ -115,18 +139,57 @@
       <svelte:self el={child} />
     {/each}
   </blockquote>
+{:else if el instanceof HTMLImageElement}
+  <img alt={el.alt} src={el.src} />
+{:else if el.tagName === "PICTURE"}
+  <picture contenteditable="false" bind:innerHTML={el.innerHTML} />
+{:else if el.tagName === "TABLE"}
+  <table>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </table>
+{:else if el.tagName === "THEAD"}
+  <thead>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </thead>
+{:else if el.tagName === "TBODY"}
+  <tbody>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </tbody>
+{:else if el.tagName === "TR"}
+  <tr>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </tr>
+{:else if el.tagName === "TH"}
+  <th>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </th>
+{:else if el.tagName === "TD"}
+  <td>
+    {#each el.childNodes as child}
+      <svelte:self el={child} />
+    {/each}
+  </td>
 {:else if el instanceof Text}
   {el.wholeText}
 {:else}
   <div class="font-bold text-red-600">
     Unhandle: <br />
-    {el.tagName}
-    {el.outerHTML}
-    {el instanceof Node}
+    <div>[{el.tagName}]</div>
+    <div>{el.outerHTML}</div>
   </div>
 {/if}
 
-<style>
+<style lang="scss">
   h1 {
     font-size: 28px;
     margin-top: 8px;
@@ -136,7 +199,7 @@
   h2 {
     font-size: 24px;
     margin-top: 48px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   h3 {
@@ -149,5 +212,17 @@
     border-left: solid 8px #ef4444;
     background-color: white;
     color: #404040;
+  }
+
+  td {
+    padding: 2px 4px;
+  }
+
+
+  tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  tr:nth-child(even) {
+    background-color: #e7e5e4;
   }
 </style>

@@ -3,14 +3,15 @@
   import type { MenuItemType } from "./components/MenuItem.svelte";
   import Sidebar from "./components/Sidebar.svelte";
   import HomePage from "./pages/HomePage.svelte";
-  import MarkdownPage from "./pages/MarkdownPage.svelte";
+  import MarkdownPageComponent from "./components/MarkdownDisplay.svelte";
   import NotFoundPage from "./pages/NotFoundPage.svelte";
   import SettingsPage from "./pages/SettingsPage.svelte";
   import TextCubePage from "./pages/TextCubePage.svelte";
   import TimerPage from "./pages/TimerPage.svelte";
   import NotepadPage from "./pages/NotepadPage.svelte";
-    import BlogPage from "./pages/BlogPage.svelte";
-    import SandboxPage from "./pages/SandboxPage.svelte";
+  import BlogPage from "./pages/BlogPage.svelte";
+  import SandboxPage from "./pages/SandboxPage.svelte";
+  import MarkdownPage from "./pages/components/MarkdownPage.svelte";
 
   const menus: MenuItemType[] = [
     [
@@ -29,13 +30,7 @@
         ["mdpage", "/markdown-page", ,],
       ],
     ],
-    [
-      "blogs",
-      null,
-      [
-        ['cheatsheet', '/blogs/cheatsheet']
-      ],
-    ],
+    ["blogs", null, [["cheatsheet", "/blogs/cheatsheet"]]],
     [
       "toolkits",
       null,
@@ -53,16 +48,22 @@
 
   <main class="ml-[100px] sm:ml-[120px] md:ml-[200px] pl-4 pr-4 ">
     <Route path="/"><HomePage /></Route>
+
+    <!-- Blogs -->
     <Route path="blogs/*">
-			<Route path=":id">
-        <BlogPage/>
+      <Route path=":id">
+        <BlogPage />
       </Route>
     </Route>
-    <Route path="settings"><SettingsPage /></Route>
-    <Route path="markdown"><MarkdownPage url="/hello.md" /></Route>
+
     <Route path="timer"><TimerPage /></Route>
+
+    <!-- Components -->
     <Route path="text-cube"><TextCubePage /></Route>
-    <Route path="markdown-page"><MarkdownPage url='/blogs/markdown-test.md'/></Route>
+    <Route path="markdown-page"><MarkdownPage /></Route>
+
+    <!-- Others -->
+    <Route path="settings"><SettingsPage /></Route>
     <Route path="notepad"><NotepadPage /></Route>
     <Route path="sandbox"><SandboxPage /></Route>
     <Route path="**"><NotFoundPage /></Route>

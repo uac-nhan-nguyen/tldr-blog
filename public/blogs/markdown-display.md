@@ -1,13 +1,22 @@
-# Markdown Page
+# Markdown Display
+
+Display markdown content using svelte.
 
 ## How it works
 
 - Use [showdownjs](https://github.com/showdownjs/showdown) to convert `.md` to `html`
 - Use [svelte-prism](https://www.npmjs.com/package/svelte-prism) to parse code snippets
 
+## Tables
+
+| Feature                    | Status |
+|----------------------------|--------|
+| Use prism for code snippet | Done   |
+| Display table              | Done   |
+
 ## Code snippets 
 
-> Theme was inspired by [AWS blogs](https://aws.amazon.com/blogs/developer/why-and-how-you-should-use-aws-sdk-for-javascript-v3-on-node-js-18/)
+> Theme was inspired from [AWS blogs](https://aws.amazon.com/blogs/developer/why-and-how-you-should-use-aws-sdk-for-javascript-v3-on-node-js-18/)
 
 ### Examples
 

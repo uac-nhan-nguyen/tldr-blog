@@ -12,6 +12,7 @@ pre {
 
 code[class*="language-"],
 pre[class*="language-"] {
+  width: max-content;
   color: black;
   background: none;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;

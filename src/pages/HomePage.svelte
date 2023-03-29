@@ -1,6 +1,6 @@
 <script lang="ts">
   import TimerButton from "../components/TimerButton.svelte";
-  import MarkdownPage from "./MarkdownPage.svelte";
+  import MarkdownPage from "../components/MarkdownDisplay.svelte";
 
   const content = `
 # Too Long. Don't Read
@@ -11,7 +11,6 @@ Writter in svelte + typescript + markdown
 </script>
 
 <div class="grid justify-items-start">
-  <TimerButton id="HomePage" />
   <section class="mb-[32px]">
     <MarkdownPage {content} />
   </section>

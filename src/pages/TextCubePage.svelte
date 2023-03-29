@@ -1,4 +1,5 @@
 <script lang="ts">
+    import MarkdownDisplay from "../components/MarkdownDisplay.svelte";
     import { HYPERLINK_WRAP_COLOR, TRANSFORM_URL } from "../components/RichTextCube";
   import RichTextCube from "../components/RichTextCube.svelte";
   import TimerButton from "../components/TimerButton.svelte";
@@ -53,6 +54,7 @@
 </script>
 
 <div class="grid justify-items-start gap-4">
+  <MarkdownDisplay content='# Rich text editor cube' />
   <TimerButton id="text-cube" />
   <div class="flex items-start gap-2 flex-wrap">
     {#each contents as item}

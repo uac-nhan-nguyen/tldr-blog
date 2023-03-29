@@ -8,6 +8,7 @@
     setLocalStorageJson,
   } from "../utils/LocalStorage";
   import { IconLock, IconLockOpen } from "@tabler/icons-svelte";
+    import MarkdownDisplay from "../components/MarkdownDisplay.svelte";
 
   let showModal = false;
   let newGroupName = "";
@@ -45,6 +46,7 @@
 </script>
 
 <div class="grid justify-items-start gap-4 pb-4">
+  <MarkdownDisplay content='# Notepad' />
   <TimerButton id="notepad" />
 
   {#each _data.groups2 as group}

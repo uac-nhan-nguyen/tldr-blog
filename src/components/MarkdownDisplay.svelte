@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Converter } from "showdown";
   import { onMount } from "svelte";
-  import MarkdownElement from "./MarkdownElement.svelte";
+  import MarkdownElement from "../pages/MarkdownElement.svelte";
 
   export let url: string | undefined = undefined;
   export let content: string | undefined = undefined;
@@ -15,20 +15,24 @@
     extensions: [],
   });
 
-  onMount(() => {
+  $: {
     if (url) {
-      fetch(url)
+      const _url = url;
+      fetch(_url)
         .then((res) => res.text())
         .then((text) => {
-          content = text;
+          if (_url === url) {
+            content = text;
+          }
         });
     }
-  });
+  }
 
   $: htmlContent = converter.makeHtml(content);
 
   let doc: Document | undefined;
   $: {
+    console.log('HTML', htmlContent)
     doc = domParser.parseFromString(htmlContent, "text/html");
   }
 </script>
