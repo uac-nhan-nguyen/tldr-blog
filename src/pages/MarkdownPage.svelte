@@ -9,8 +9,8 @@
     h3: "text-[20px]",
     ul: "",
     li: "",
-    code: "bg-slate-100 font-mono",
-    pre: "bg-slate-100 px-2 py-2 font-mono",
+    code: "md-code",
+    pre: "px-2 py-2 font-mono md-pre",
   };
 
   const bindings = Object.keys(classMap).map((key) => ({

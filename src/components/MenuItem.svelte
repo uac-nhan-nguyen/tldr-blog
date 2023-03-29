@@ -36,6 +36,7 @@
   {#if item[1]}
     <Link
       class="cursor-pointer hover:font-[600] md:hover:font-[700] 
+      truncate
       tracking-tight
       text-[10px] sm:text-lg
       {level > 0 ? "pl-[4px] sm:pl-[8px]" : ""}

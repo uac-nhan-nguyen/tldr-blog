@@ -36,9 +36,10 @@
       editable: true,
     },
     {
-      content: `Supported tags:<br>${[
+      content: `Supported tags: <br><br>${[
         'Jira: ' + TRANSFORM_URL('https://uac-cloud.atlassian.net/browse/TICKET-650'),
-        'Github: ' + TRANSFORM_URL('https://github.com/uac-nhan-nguyen/tldr-blog')
+        'Github: ' + TRANSFORM_URL('https://github.com/uac-nhan-nguyen/tldr-blog'),
+        'Github Pull Request: ' + TRANSFORM_URL('https://github.com/uac-nhan-nguyen/tldr-blog/pull/372'),
       ].join('<br>')}`,
       editable: true,
     },

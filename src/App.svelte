@@ -9,6 +9,7 @@
   import TextCubePage from "./pages/TextCubePage.svelte";
   import TimerPage from "./pages/TimerPage.svelte";
   import NotepadPage from "./pages/NotepadPage.svelte";
+    import BlogPage from "./pages/BlogPage.svelte";
 
   const menus: MenuItemType[] = [
     [
@@ -30,7 +31,7 @@
       "blogs",
       null,
       [
-        // ['markdown', '/markdown']
+        ['2023-03-29 code snippet background on aws blog', '/blogs/2023-03-29 code snippet background on aws blog']
       ],
     ],
     [
@@ -50,6 +51,9 @@
 
   <main class="ml-[100px] sm:ml-[120px] md:ml-[200px] pl-4 pr-4 ">
     <Route path="/"><HomePage /></Route>
+    <Route path="blogs/*">
+			<Route path=":id" component={BlogPage} />
+    </Route>
     <Route path="settings"><SettingsPage /></Route>
     <Route path="markdown"><MarkdownPage url="/hello.md" /></Route>
     <Route path="timer"><TimerPage /></Route>
