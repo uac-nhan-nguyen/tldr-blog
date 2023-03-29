@@ -10,6 +10,7 @@
   import TimerPage from "./pages/TimerPage.svelte";
   import NotepadPage from "./pages/NotepadPage.svelte";
     import BlogPage from "./pages/BlogPage.svelte";
+    import SandboxPage from "./pages/SandboxPage.svelte";
 
   const menus: MenuItemType[] = [
     [
@@ -25,13 +26,14 @@
       null,
       [
         ["textcube", "/text-cube", ,],
+        ["mdpage", "/markdown-page", ,],
       ],
     ],
     [
       "blogs",
       null,
       [
-        ['2023-03-29 code snippet background on aws blog', '/blogs/2023-03-29 code snippet background on aws blog']
+        ['cheatsheet', '/blogs/cheatsheet']
       ],
     ],
     [
@@ -58,7 +60,9 @@
     <Route path="markdown"><MarkdownPage url="/hello.md" /></Route>
     <Route path="timer"><TimerPage /></Route>
     <Route path="text-cube"><TextCubePage /></Route>
+    <Route path="markdown-page"><MarkdownPage url='/blogs/markdown-test.md'/></Route>
     <Route path="notepad"><NotepadPage /></Route>
+    <Route path="sandbox"><SandboxPage /></Route>
     <Route path="**"><NotFoundPage /></Route>
   </main>
 </Router>

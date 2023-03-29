@@ -28,6 +28,7 @@
     "dayjs": "^1.11.7",
     "ksuid": "^3.0.0",
     "showdown": "^2.1.0",
-    "svelte-navigator": "^3.2.2"
+    "svelte-navigator": "^3.2.2",
+    "svelte-prism": "^1.1.6"
   }
 }

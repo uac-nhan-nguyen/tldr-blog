@@ -8,6 +8,7 @@
 html {
   -webkit-font-smoothing: antialiased;
 }
+
 body {
   margin: 0;
   font-weight: 300;
@@ -15,44 +16,19 @@ body {
   font-size: 14px;
 }
 
-h1 {
-  font-size: 28px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
-.md-pre {
-  overflow: auto;
-  padding-top: 21px;
-  padding-bottom: 21px;
-  max-height: 30em;
-
-  background: linear-gradient(180deg,rgb(241 245 249),rgb(241 245 249) 50%,white 0,white);
-  background-size: 3em 3em;
-  background-attachment: local;
-
-  border: 1px solid rgb(241 245 249);
-}
-
-.md-pre.unlimited-height-code {
-  max-height: none
-}
-
-.md-code {
-  position: relative;
-  overflow: visible;
-  max-height: none;
-
-  height: 100%;
-  display: block;
-
-  border: 0;
-  background: none;
-  line-height: 1.5;
+blockquote,
+ul,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
 }
