@@ -1,5 +1,7 @@
 # Dev Cheatsheet
 
+Try to have all on one page
+
 ## Useful links
 
 [List Tailwind Colors](https://tailwindcss.com/docs/customizing-colors)
