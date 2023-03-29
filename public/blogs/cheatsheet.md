@@ -1,8 +1,16 @@
 # Dev Cheatsheet
 
-[Tailwind Colors](https://tailwindcss.com/docs/customizing-colors)
+## Useful links
 
-<br>
+[List Tailwind Colors](https://tailwindcss.com/docs/customizing-colors)
+
+
+## About size
+
+- add `svelte-prism` increase gzip size by 11kb (from ~52kb to ~63kb) 
+
+
+## Some codes
 
 ### Recursive in #svelte
 

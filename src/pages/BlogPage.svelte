@@ -4,9 +4,6 @@
     import MarkdownPage from "./MarkdownPage.svelte";
 
     const params = useParams();
-
-    $: console.log($params)
-
 </script>
 
 <MarkdownPage url={$params.id + '.md'}/>

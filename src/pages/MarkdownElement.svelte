@@ -28,32 +28,51 @@
   {/if}
 {:else if el.tagName === "H1"}
   <div class="flex items-baseline">
-    <h1 contenteditable="false" bind:innerHTML={el.innerHTML} />
+    <h1>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </h1>
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "H2"}
-
   <div class="flex items-baseline">
-    <h2 contenteditable="false" bind:innerHTML={el.innerHTML} />
+    <h2>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </h2>
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "H3"}
   <div class="flex items-baseline">
-    <h3 contenteditable="false" bind:innerHTML={el.innerHTML} />
+    <h3>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </h3>
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "H4"}
   <div class="flex items-baseline">
-    <h4 contenteditable="false" bind:innerHTML={el.innerHTML} />
+    <h4>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </h4>
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "H5"}
   <div class="flex items-baseline">
-    <h5 contenteditable="false" bind:innerHTML={el.innerHTML} />
+    <h5>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </h5>
     <span class={tagClass}>{el.tagName}</span>
   </div>
 {:else if el.tagName === "BR"}
-  <br>
+  <br />
 {:else if el instanceof HTMLAnchorElement}
   <a href={el.href} target="_blank">
     {#each el.childNodes as child}
@@ -116,7 +135,7 @@
 
   h2 {
     font-size: 24px;
-    margin-top: 24px;
+    margin-top: 48px;
     margin-bottom: 8px;
   }
 
@@ -129,6 +148,6 @@
   blockquote {
     border-left: solid 8px #ef4444;
     background-color: white;
-    color: #404040
+    color: #404040;
   }
 </style>
