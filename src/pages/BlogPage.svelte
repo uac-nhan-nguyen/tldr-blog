@@ -6,4 +6,4 @@
     const params = useParams();
 </script>
 
-<MarkdownPage url={$params.id + '.md'}/>
+<MarkdownPage className='mb-40' url={$params.id + '.md'}/>
