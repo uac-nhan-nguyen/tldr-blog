@@ -12,6 +12,7 @@
   import BlogPage from "./pages/BlogPage.svelte";
   import SandboxPage from "./pages/SandboxPage.svelte";
   import MarkdownPage from "./pages/components/MarkdownPage.svelte";
+    import RegexPage from "./pages/tools/RegexPage.svelte";
 
   const menus: MenuItemType[] = [
     [
@@ -35,6 +36,7 @@
       "toolkits",
       null,
       [
+        ["regex", "/tools/regex", ,],
         // ['Privacy Policy collections', '/privacy-policy-collections']
       ],
     ],
@@ -61,6 +63,9 @@
     <!-- Components -->
     <Route path="text-cube"><TextCubePage /></Route>
     <Route path="markdown-page"><MarkdownPage /></Route>
+
+    <!-- Tools -->
+    <Route path="tools/regex"><RegexPage /></Route>
 
     <!-- Others -->
     <Route path="settings"><SettingsPage /></Route>

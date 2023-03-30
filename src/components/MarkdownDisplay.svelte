@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import MarkdownElement from "../pages/MarkdownElement.svelte";
 
+  export let className: string = '';
   export let url: string | undefined = undefined;
   export let content: string | undefined = undefined;
 
@@ -32,12 +33,11 @@
 
   let doc: Document | undefined;
   $: {
-    console.log('HTML', htmlContent)
     doc = domParser.parseFromString(htmlContent, "text/html");
   }
 </script>
 
-<div>
+<div class={className}>
   {#if doc}
     {#each Array.prototype.slice.call(doc.body.children) as el}
       <MarkdownElement {el} />

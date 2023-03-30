@@ -21,6 +21,9 @@
       notes: [],
     },
     (e) => {
+      if (!Array.isArray(e.notes)){
+        e.notes = []
+      }
       e.notes = e.notes.map((i) => {
         if (!i.id) i.id = generateId();
         return i;
