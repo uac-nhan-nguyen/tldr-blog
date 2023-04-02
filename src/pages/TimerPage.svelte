@@ -8,6 +8,7 @@
   dayjs.extend(utc);
   // const ONE_MINUTE = 1000 * 60;
   const ONE_HOUR = 1000 * 60 * 60;
+  const ONE_DAY = 1000 * 60 * 60 * 24;
 
   let start: number = parseInt(localStorage.getItem("timerStart"));
   if (isNaN(start)) {
@@ -22,7 +23,7 @@
 
   $:{
     diff = now - start;
-    format = diff < ONE_HOUR ? "mm:ss" : "HH:mm:ss";
+    format = diff < ONE_HOUR ? "mm:ss" : diff < ONE_DAY ? "HH:mm:ss" : 'd [days] HH:mm:ss';
   }
 
   const restart = () => {

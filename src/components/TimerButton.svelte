@@ -16,6 +16,7 @@
 
   dayjs.extend(utc);
   const ONE_HOUR = 1000 * 60 * 60;
+  const ONE_DAY = 1000 * 60 * 60 * 24;
 
   let start: number = parseInt(localStorage.getItem(storageId));
   if (isNaN(start)) {
@@ -37,14 +38,17 @@
   let now = Date.now();
 
   let intervalId = -1;
-  intervalId = setInterval(() => {
-    now = Date.now();
-  }, 100);
+
+  onMount(() => {
+    intervalId = window.setInterval(() => {
+      now = Date.now();
+    }, 100);
+  })
 
   $: {
     diff = now - start;
     smaller = diff < ONE_HOUR;
-    format = smaller ? "mm:ss" : "HH:mm:ss";
+    format = diff < ONE_HOUR ? "mm:ss" : diff < ONE_DAY ? "HH:mm:ss" : "d[d] HH:mm";
   }
 
   onDestroy(() => {

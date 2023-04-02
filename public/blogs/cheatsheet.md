@@ -155,3 +155,13 @@ pm.test("Response payload is correct", function () {
   },
 }
 ```
+
+
+## Others
+
+### dayjs
+
+```js
+// use [] to format with escape
+const format = 'd [days] HH:mm:ss'
+```
