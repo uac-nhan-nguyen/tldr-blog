@@ -128,7 +128,7 @@
     {/each}
   </li>
 {:else if el.tagName === "CODE"}
-  <code class="px-1 bg-neutral-200">
+  <code class="px-1 bg-red-100">
     {#each el.childNodes as child}
       <svelte:self el={child} />
     {/each}

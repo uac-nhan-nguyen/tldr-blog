@@ -2,6 +2,7 @@
   import Prism from "svelte-prism";
   import 'prismjs/components/prism-json';
   import 'prismjs/components/prism-json5';
+  import 'prismjs/components/prism-bash';
 
   export let className = '';
   export let classLabel = '';

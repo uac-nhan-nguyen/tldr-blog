@@ -1,14 +1,15 @@
 <script lang="ts">
-  import Button from "../components/Button.svelte";
-  import Modal from "../components/Modal.svelte";
-  import Notepad from "../components/Notepad.svelte";
-  import TimerButton from "../components/TimerButton.svelte";
+  import Button from "components/Button.svelte";
+  import Modal from "components/Modal.svelte";
+  import Notepad from "components/Notepad.svelte";
+  import TimerButton from "components/TimerButton.svelte";
   import {
     getLocalStorageJson,
     setLocalStorageJson,
-  } from "../utils/LocalStorage";
-  import { IconLock, IconLockOpen } from "@tabler/icons-svelte";
-    import MarkdownDisplay from "../components/MarkdownDisplay.svelte";
+  } from "utils/LocalStorage";
+  import MarkdownDisplay from "components/MarkdownDisplay.svelte";
+  import IconLock from "components/icons/IconLock.svelte";
+  import IconLockOpen from "components/icons/IconLockOpen.svelte";
 
   let showModal = false;
   let newGroupName = "";
@@ -46,8 +47,8 @@
 </script>
 
 <div class="grid justify-items-start gap-4 pb-4">
-  <MarkdownDisplay content='# Notepad' />
-  <TimerButton id="notepad" />
+  <MarkdownDisplay content='# Notepad'/>
+  <TimerButton id="notepad"/>
 
   {#each _data.groups2 as group}
     <div>
@@ -55,27 +56,28 @@
         <div class="text-lg">{group.name}</div>
         {#if group.locked}
           <button
-            class="cursor-pointer border-none bg-white "
-            on:click={() => (group.locked = false)}
+              class="cursor-pointer border-none bg-white "
+              on:click={() => (group.locked = false)}
           >
             <IconLock size={16}/>
           </button>
         {:else}
           <button
-            class="cursor-pointer border-none bg-white "
-            on:click={() => (group.locked = true)}
+              class="cursor-pointer border-none bg-white "
+              on:click={() => (group.locked = true)}
           >
-            <IconLockOpen size={16} />
+            <IconLockOpen size={16}/>
           </button>
         {/if}
       </div>
-      <Notepad id={group.id.toString()} lock={group.locked} />
+      <Notepad id={group.id.toString()} lock={group.locked}/>
     </div>
   {/each}
 
   <button
-    class="px-4 py-2 border-none hover:bg-slate-200 bg-slate-100 cursor-pointer"
-    on:click={() => (showModal = true)}>Add new group ...</button
+      class="px-4 py-2 border-none hover:bg-slate-200 bg-slate-100 cursor-pointer"
+      on:click={() => (showModal = true)}>Add new group ...
+  </button
   >
 
   <Modal bind:showModal className="border-0">
@@ -84,9 +86,9 @@
       <div>
         <label for="name">Group name</label>
         <input
-          id="name"
-          bind:value={newGroupName}
-          on:keypress={(e) => {
+            id="name"
+            bind:value={newGroupName}
+            on:keypress={(e) => {
             if (e.key === "Enter") {
               createGroup(newGroupName);
             }
@@ -95,7 +97,8 @@
       </div>
       <div>
         <Button on:click={() => (showModal = false)} type="secondary"
-          >Cancel</Button
+        >Cancel
+        </Button
         >
         <Button on:click={() => createGroup(newGroupName)}>Create</Button>
       </div>
