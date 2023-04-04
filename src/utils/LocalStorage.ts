@@ -1,8 +1,18 @@
-import { writable, type Writable } from "svelte/store";
+import {writable, type Writable} from "svelte/store";
 
-export const getLocalStorageJson = <T>(key: string, init: T, mutate?: (T) => T): T | null => {
+export const getLocalStorage = <T>(key: string, init: T, mutate?: (T) => T): T | null => {
   const text = localStorage.getItem(key);
   if (!text) return init;
+
+  if (typeof init === 'number') {
+    const ans = parseInt(text);
+    if (isNaN(ans)) {
+      return init;
+    }
+    else {
+      return ans as T;
+    }
+  }
 
   try {
     const data = JSON.parse(text);
@@ -14,13 +24,12 @@ export const getLocalStorageJson = <T>(key: string, init: T, mutate?: (T) => T):
     }
     if (mutate != null) ans = mutate(ans);
     return ans;
-  }
-  catch (e) {
+  } catch (e) {
     return text as T;
   }
 }
 
-export const setLocalStorageJson = <T>(key: string, data: T) => {
+export const setLocalStorage = <T>(key: string, data: T) => {
   if (typeof data === 'string') {
     localStorage.setItem(key, data);
   }
@@ -36,12 +45,11 @@ const sharedVariable: {
 export const useLocalStorage = <T>(key: string, initialValue: T): Writable<T> => {
   if (sharedVariable[key]) return sharedVariable[key];
 
-  let value = initialValue
-  value = getLocalStorageJson<T>(key, initialValue);
+  const value = getLocalStorage<T>(key, initialValue);
 
   const w = writable(value);
   w.subscribe((value) => {
-    setLocalStorageJson(key, value)
+    setLocalStorage(key, value)
   })
   return sharedVariable[key] = w;
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
   import RichTextCube from "../components/RichTextCube.svelte";
   import { generateId } from "../utils/common";
-  import { getLocalStorageJson } from "../utils/LocalStorage";
+  import { getLocalStorage } from "../utils/LocalStorage";
 
   export let id: string;
   export let lock: boolean = false;
@@ -15,7 +15,7 @@
     notes: Note[];
   };
   const storageId = `notepad-${id}`;
-  let _data: NotepadData = getLocalStorageJson(
+  let _data: NotepadData = getLocalStorage(
     storageId,
     {
       notes: [],

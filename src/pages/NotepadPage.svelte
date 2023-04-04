@@ -4,8 +4,8 @@
   import Notepad from "components/Notepad.svelte";
   import TimerButton from "components/TimerButton.svelte";
   import {
-    getLocalStorageJson,
-    setLocalStorageJson,
+    getLocalStorage,
+    setLocalStorage,
   } from "utils/LocalStorage";
   import MarkdownDisplay from "components/MarkdownDisplay.svelte";
   import IconLock from "components/icons/IconLock.svelte";
@@ -15,7 +15,7 @@
   let newGroupName = "";
 
   const storageId = "NotepadPage";
-  const _data = getLocalStorageJson<{
+  const _data = getLocalStorage<{
     groups2: {
       id: number;
       name: string;
@@ -39,7 +39,7 @@
   };
 
   $: {
-    setLocalStorageJson(storageId, _data);
+    setLocalStorage(storageId, _data);
   }
 
   const className = "border-solid border-2 p-1";
