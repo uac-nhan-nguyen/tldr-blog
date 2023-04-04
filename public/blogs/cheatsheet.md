@@ -90,6 +90,9 @@ example `IconLock.svelte`
 
 ### use prism from serverside
 
+Also,
+- use tailwind
+
 ```html
 <!DOCTYPE HTML>
 <html lang="en">

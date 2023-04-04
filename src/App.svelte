@@ -13,6 +13,7 @@
   import MarkdownPage from "./pages/components/MarkdownPage.svelte";
   import RegexPage from "./pages/tools/RegexPage.svelte";
   import JsonSchemaPage from "./pages/tools/JsonSchemaPage.svelte";
+  import DrawChartPage from "./pages/apps/DrawChartPage.svelte";
 
   const menus: MenuItemType[] = [
     [
@@ -64,8 +65,15 @@
       </Route>
     </Route>
 
+    <!-- Apps -->
     <Route path="timer">
       <TimerPage/>
+    </Route>
+    <Route path="notepad">
+      <NotepadPage/>
+    </Route>
+    <Route path="draw-chart">
+      <DrawChartPage/>
     </Route>
 
     <!-- Components -->
@@ -87,9 +95,6 @@
     <!-- Others -->
     <Route path="settings">
       <SettingsPage/>
-    </Route>
-    <Route path="notepad">
-      <NotepadPage/>
     </Route>
     <Route path="sandbox">
       <SandboxPage/>
