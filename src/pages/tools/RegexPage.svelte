@@ -1,8 +1,8 @@
 <script lang="ts">
-  import MarkdownDisplay from "../../components/MarkdownDisplay.svelte";
-  import PrismWrapper from "../../components/PrismWrapper.svelte";
-  import TimerButton from "../../components/TimerButton.svelte";
-  import { useLocalStorage } from "../../utils/LocalStorage";
+  import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
+  import PrismWrapper from "components/PrismWrapper.svelte";
+  import TimerButton from "components/TimerButton.svelte";
+  import { useLocalStorage } from "utils/LocalStorage";
 
   let text = useLocalStorage<string>("RegexPage-text", "chi.nhan@m1studio.co");
   let regex = useLocalStorage<string>("RegexPage-regex", "\\S+");

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PrismWrapper from "../components/PrismWrapper.svelte";
+  import PrismWrapper from "../PrismWrapper.svelte";
 
   export let el: HTMLElement;
 
@@ -81,6 +81,16 @@
   <br />
 {:else if el.tagName === "HR"}
   <hr />
+{:else if el instanceof HTMLAnchorElement && !isNaN(parseInt(el.innerText))}
+  <sup>
+    <a
+      class="no-underline hover:underline text-blue-700"
+      href={el.href}
+      target="_blank"
+    >
+      [{el.innerText}]
+    </a>
+  </sup>
 {:else if el instanceof HTMLAnchorElement}
   <a
     class="no-underline hover:underline text-blue-700"
@@ -190,6 +200,9 @@
 {/if}
 
 <style lang="scss">
+  ul,ol {
+    padding-left: 16px;
+  }
   h1 {
     font-size: 28px;
     margin-top: 8px;
@@ -217,7 +230,6 @@
   td {
     padding: 2px 4px;
   }
-
 
   tr:nth-child(odd) {
     background-color: #fafafa;

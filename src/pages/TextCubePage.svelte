@@ -1,8 +1,8 @@
 <script lang="ts">
-    import MarkdownDisplay from "../components/MarkdownDisplay.svelte";
-    import { HYPERLINK_WRAP_COLOR, TRANSFORM_URL } from "../components/RichTextCube";
-  import RichTextCube from "../components/RichTextCube.svelte";
-  import TimerButton from "../components/TimerButton.svelte";
+    import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
+    import { HYPERLINK_WRAP_COLOR, TRANSFORM_URL } from "components/RichTextCube";
+  import RichTextCube from "components/RichTextCube.svelte";
+  import TimerButton from "components/TimerButton.svelte";
 
   let content =
     'This box is <b class="text-red-600">bounded two ways</b>. Changes in these two boxes results in <b>HTML and Text</b> updated';

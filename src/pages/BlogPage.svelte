@@ -1,7 +1,7 @@
 <script lang="ts">
   	import { useParams } from "svelte-navigator";
 
-    import MarkdownPage from "../components/MarkdownDisplay.svelte";
+    import MarkdownPage from "components/markdown/MarkdownDisplay.svelte";
 
     const params = useParams();
 </script>

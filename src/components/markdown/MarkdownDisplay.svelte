@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Converter } from "showdown";
   import { onMount } from "svelte";
-  import MarkdownElement from "../pages/MarkdownElement.svelte";
+  import MarkdownElement from "./MarkdownElement.svelte";
 
   export let className: string = '';
   export let url: string | undefined = undefined;
@@ -14,6 +14,7 @@
   const converter = new Converter({
     tables: true,
     extensions: [],
+    disableForced4SpacesIndentedSublists: true,
   });
 
   $: {

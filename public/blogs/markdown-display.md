@@ -1,6 +1,13 @@
 # Markdown Display
 
-Display markdown content using svelte.
+Display markdown content using svelte + showdownjs.
+
+This page tests some of the basic features
+
+<br>
+[![Github](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=181717&logo=GitHub&logoColor=FFFFFF&label=)](https://github.com/uac-nhan-nguyen/tldr-blog/blob/main/src/components/MarkdownDisplay.svelte)
+
+
 
 ## How it works
 
@@ -13,6 +20,25 @@ Display markdown content using svelte.
 |----------------------------|--------|
 | Use prism for code snippet | Done   |
 | Display table              | Done   |
+
+
+## Lists
+
+- Unordered/Bullet lists
+  - 2 spaces indent needs `disableForced4SpacesIndentedSublists=true` for showdownjs
+- Item
+- Item
+
+1. Ordered lists should work
+     1. Nested item for order list must have 4 indent spaces
+2. Second item
+
+## Reference
+
+Wiki style reference is apply when reference text is number [1]
+
+[1]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
 
 ## Code snippets 
 

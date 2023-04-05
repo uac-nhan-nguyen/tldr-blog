@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownDisplay from "../../components/MarkdownDisplay.svelte";
+  import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
 
   let url = "/blogs/markdown-display.md";
 </script>

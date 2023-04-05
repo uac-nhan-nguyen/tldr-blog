@@ -2,7 +2,7 @@
 
   import Chart from "components/chart/Chart.svelte";
   import type {ChartData} from "components/chart/Chart.d.ts";
-  import MarkdownDisplay from "components/MarkdownDisplay.svelte";
+  import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
 
   let data: ChartData = {
     nodes: [{

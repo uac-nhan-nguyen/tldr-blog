@@ -7,7 +7,7 @@
     getLocalStorage,
     setLocalStorage,
   } from "utils/LocalStorage";
-  import MarkdownDisplay from "components/MarkdownDisplay.svelte";
+  import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
   import IconLock from "components/icons/IconLock.svelte";
   import IconLockOpen from "components/icons/IconLockOpen.svelte";
 

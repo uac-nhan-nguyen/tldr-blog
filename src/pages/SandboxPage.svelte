@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PrismWrapper from "../components/PrismWrapper.svelte";
-    import MarkdownPage from "../components/MarkdownDisplay.svelte";
+  import PrismWrapper from "components/PrismWrapper.svelte";
+    import MarkdownPage from "components/markdown/MarkdownDisplay.svelte";
 
   const lang = "css";
   let source = `.md-pre {

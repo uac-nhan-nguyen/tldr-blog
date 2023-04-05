@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MarkdownPage from "../components/MarkdownDisplay.svelte";
+  import MarkdownPage from "components/markdown/MarkdownDisplay.svelte";
   import {getLocalStorage, setLocalStorage} from "utils/LocalStorage";
   import TimeAgo from "components/TimeAgo.svelte";
 
