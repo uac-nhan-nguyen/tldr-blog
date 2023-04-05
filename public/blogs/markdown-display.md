@@ -5,7 +5,7 @@ Display markdown content using svelte + showdownjs.
 This page tests some of the basic features
 
 <br>
-[![Github](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=181717&logo=GitHub&logoColor=FFFFFF&label=)](https://github.com/uac-nhan-nguyen/tldr-blog/blob/main/src/components/MarkdownDisplay.svelte)
+[![Github](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=181717&logo=GitHub&logoColor=FFFFFF&label=)](https://github.com/uac-nhan-nguyen/tldr-blog/tree/main/src/components/markdown)
 
 
 
