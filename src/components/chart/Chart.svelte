@@ -1,15 +1,43 @@
 <script lang="ts">
+  import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
+  import ArrowCanvas from "./ArrowCanvas.svelte";
   import type { ChartData } from "./Chart";
+  import ComponentsCanvas from "./ComponentsCanvas.svelte";
+  import GridCanvas from "./GridCanvas.svelte";
+
+  export let gap = 8;
 
   export let data: ChartData;
 
+  let componentsCanvasW = 600;
+  let componentsCanvasH = 400;
+
   const className = "w-10 h-10 border-solid border-1";
 
-  const snap = (v: number) => v - (v % 16);
+  const snap = (v: number) => v - (v % gap);
 </script>
 
 <div>
+  <MarkdownDisplay content="## Components" />
+  <div class="relative" style="height: {componentsCanvasH}px">
+    <GridCanvas
+      gap={10}
+      dotColor="black"
+      width={componentsCanvasW}
+      height={componentsCanvasH}
+      className="absolute top-0 left-0 inset-border-2"
+    />
+    <ComponentsCanvas
+      width={componentsCanvasW}
+      height={componentsCanvasH}
+      className="absolute top-0 left-0"
+    />
+  </div>
+
+  <MarkdownDisplay content="## Chart" />
   <div class="relative">
+    <GridCanvas {gap} className="absolute top-0 left-0" />
+    <ArrowCanvas className="absolute top-0 left-0" />
     {#each data.nodes as node}
       {@const x = snap(node.x + (node.offsetX ?? 0) - (node.startX ?? 0))}
       {@const y = snap(node.y + (node.offsetY ?? 0) - (node.startY ?? 0))}

@@ -14,6 +14,9 @@
   import RegexPage from "./pages/tools/RegexPage.svelte";
   import JsonSchemaPage from "./pages/tools/JsonSchemaPage.svelte";
   import DrawChartPage from "./pages/apps/DrawChartPage.svelte";
+  import { setLocalStorage } from "utils/LocalStorage";
+
+  setLocalStorage('last-visit', Date.now());
 
   const menus: MenuItemType[] = [
     [

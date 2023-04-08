@@ -1,7 +1,6 @@
 <script lang="ts">
-
   import Chart from "components/chart/Chart.svelte";
-  import type {ChartData} from "components/chart/Chart.d.ts";
+  import type {ChartData} from "components/chart/Chart";
   import MarkdownDisplay from "components/markdown/MarkdownDisplay.svelte";
 
   let data: ChartData = {

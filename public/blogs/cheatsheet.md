@@ -7,6 +7,7 @@ Try to have all on one page
 - [List Tailwind Colors](https://tailwindcss.com/docs/customizing-colors)
 - [List Tabler Icons](https://tabler-icons.io)
 - [Postman generate random data](https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/writing-scripts/script-references/variables-list.md)
+- [Shields with icons](https://raw.githubusercontent.com/progfay/shields-with-icon/master/README.md)
 
 ## Frontend Svelte
 

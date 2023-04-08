@@ -11,7 +11,6 @@ Writter in svelte + typescript + markdown
     `;
 
   const lastVisit = getLocalStorage('last-visit', Date.now());
-  setLocalStorage('last-visit', Date.now());
 </script>
 
 <div class="grid justify-items-start">
