@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { drawArrow, drawArrowLine, drawCurve, drawPoint, mm} from "./canvas-utils";
+  import { drawArrow, drawArrowLine, drawCurve, drawCurve2, drawPoint, mm} from "./canvas-utils";
 
   export let width = 300;
   export let height = 300;
@@ -51,7 +51,7 @@
       context.translate(-20,-20);
 
       /// draw arrow line LHS
-      const r2 = 50
+      const r2 = 100
       context.translate(60,r2);
       drawPoint(context, 0, 0, 10)
       drawArrowLine(context, 0, 0, mm(mx-60, -40,40), mm(my-r2, -40,40), {radius:0.3, side: 'LHS'});
@@ -62,6 +62,20 @@
       drawPoint(context, 0, 0, 10)
       drawArrowLine(context, 0, 0, mm(mx-120, -40,40), mm(my-r2, -40,40), {radius:0.3, side: 'RHS'});
       context.translate(-120,-r2);
+
+      /// draw arrow line RHS
+      context.translate(180,r2);
+      drawPoint(context, 0, 0, 10)
+      drawCurve2(context, 0, 0, mm(mx-180, -40,40), mm(my-r2, -40,40), {radius:0.5, side: 'Horizontal'});
+      drawArrow(context,mm(mx-180, -40,40), mm(my-r2, -40,40),'RightIfNegative',10,10)
+      context.translate(-180,-r2);
+
+      /// draw arrow line RHS
+      context.translate(240,r2);
+      drawPoint(context, 0, 0, 10)
+      drawCurve2(context, 0, 0, mm(mx-240, -40,40), mm(my-r2, -40,40), {radius:0.5, side: 'Vertical'});
+      drawArrow(context,mm(mx-240, -40,40), mm(my-r2, -40,40),'DownIfNegative',10,10)
+      context.translate(-240,-r2);
 
       // reset context
       context.translate(-1,-1)

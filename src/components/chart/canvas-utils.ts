@@ -3,6 +3,11 @@ type CurveProps = {
   side?: 'RHS' | 'LHS'
 }
 
+type Curve2Props = {
+  radius?: number,
+  side?: 'Horizontal' | 'Vertical'
+}
+
 export const drawArrowLine = (context: CanvasRenderingContext2D,
   x1, y1, x2, y2, props?: CurveProps & {
     arrowSize?: number
@@ -21,23 +26,29 @@ export const drawArrowLine = (context: CanvasRenderingContext2D,
  * x,y are tip position instead of center
  */
 export const drawArrow = (context: CanvasRenderingContext2D,
-  x: number, y: number, angle: number | 'Left' | 'Right' | 'Up' | 'Down', w: number, h: number) => {
-    if (typeof angle === 'string'){
-      switch (angle){
-        case "Left":
-          angle = 0
-          break
-        case "Right":
-          angle = Math.PI
-          break
-        case "Up":
-          angle = Math.PI/2
-          break
-        case "Down":
-          angle = -Math.PI/2
-          break
-      }
+  x: number, y: number, angle: number | 'Left' | 'Right' | 'Up' | 'Down' | 'RightIfNegative' | 'DownIfNegative', w: number, h: number) => {
+  if (typeof angle === 'string') {
+    switch (angle) {
+      case "Left":
+        angle = 0
+        break
+      case "Right":
+        angle = Math.PI
+        break
+      case "Up":
+        angle = Math.PI / 2
+        break
+      case "Down":
+        angle = -Math.PI / 2
+        break
+      case "RightIfNegative":
+        angle = x < 0 ? Math.PI : 0
+        break
+      case "DownIfNegative":
+        angle = y < 0 ? -Math.PI / 2 : Math.PI / 2
+        break
     }
+  }
   context.translate(x, y);
   context.rotate(angle);
   context.translate(- w, - h / 2);
@@ -87,7 +98,28 @@ export const drawCurve = (context: CanvasRenderingContext2D,
   }
   context.stroke();
   context.closePath();
+
 }
+
+export const drawCurve2 = (context: CanvasRenderingContext2D,
+  x1: number, y1: number, x2: number, y2: number, props?: Curve2Props
+) => {
+  const r = props?.radius ?? 0.3;
+
+  const x3 = (x1 + x2) / 2
+  const y3 = (y1 + y2) / 2
+
+  if (props.side === 'Vertical') {
+    drawCurve(context, x1, y1, x3, y3, { ...props, side: 'LHS' });
+    drawCurve(context, x3, y3, x2, y2, { ...props, side: 'RHS' });
+  }
+  else {
+    drawCurve(context, x1, y1, x3, y3, { ...props, side: 'RHS' });
+    drawCurve(context, x3, y3, x2, y2, { ...props, side: 'LHS' });
+  }
+}
+
+
 
 export const mm = (value, min, max) => Math.max(min, Math.min(max, value));
 
