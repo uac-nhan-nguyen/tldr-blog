@@ -4,6 +4,7 @@
 
 - add `svelte-prism` increase gzip size by 11kb (from ~52kb to ~63kb)
 - add support for `json` and `json5` for prism increase gzip size by 2kb
+- `@fakerjs/faker` would add ~1MB to gzip size
 
 ## About build
 

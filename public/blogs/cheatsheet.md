@@ -345,6 +345,30 @@ Link: [https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/w
 }
 ```
 
+### vite.config.ts
+
+```js
+import { defineConfig } from 'vite'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import * as path from "path";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    svelte(),
+  ],
+  resolve: {
+    /** Map import paths */
+    alias : [
+      {find: 'utils', replacement: path.resolve(__dirname, 'src/utils')},
+      {find: 'components', replacement: path.resolve(__dirname, 'src/components')},
+    ]
+  }
+})
+
+```
+
+
 ## Others
 
 ### dayjs
