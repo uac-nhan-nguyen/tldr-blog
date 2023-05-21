@@ -6,14 +6,17 @@
   const tagClass = "ml-2 font-mono font-bold text-neutral-400 text-[11px]";
 
   let source, lang;
-  if (el instanceof HTMLPreElement && el.children.length > 0) {
-    const first = el.children[0];
-    if (first.tagName === "CODE" && first instanceof HTMLElement) {
-      source = first.innerText;
-      lang = first.className
-        .split(" ")
-        .find((i) => i.startsWith("lang"))
-        ?.split("-")[1];
+
+  $: {
+    if (el instanceof HTMLPreElement && el.children.length > 0) {
+      const first = el.children[0];
+      if (first.tagName === "CODE" && first instanceof HTMLElement) {
+        source = first.innerText;
+        lang = first.className
+          .split(" ")
+          .find((i) => i.startsWith("lang"))
+          ?.split("-")[1];
+      }
     }
   }
 </script>
@@ -200,7 +203,8 @@
 {/if}
 
 <style lang="scss">
-  ul,ol {
+  ul,
+  ol {
     padding-left: 16px;
   }
   h1 {

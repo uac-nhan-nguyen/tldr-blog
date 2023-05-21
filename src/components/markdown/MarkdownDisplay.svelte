@@ -7,6 +7,7 @@
   export let content: string | undefined = undefined;
 
   let htmlContent: string | undefined;
+  let slotText: string;
 
   const domParser = new DOMParser();
 
@@ -29,6 +30,9 @@
     }
   }
 
+  $: {
+    if (slotText) content=slotText;
+  }
   $: htmlContent = converter.makeHtml(content);
 
   let doc: Document | undefined;
@@ -44,3 +48,7 @@
     {/each}
   {/if}
 </div>
+
+<span contenteditable="false" bind:textContent={slotText} class="hidden"> 
+  <slot/>
+</span>

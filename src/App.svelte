@@ -15,6 +15,7 @@
   import JsonSchemaPage from "./pages/tools/JsonSchemaPage.svelte";
   import DrawChartPage from "./pages/apps/DrawChartPage.svelte";
   import { setLocalStorage } from "utils/LocalStorage";
+    import RandomPage from "./pages/tools/RandomPage.svelte";
 
   setLocalStorage('last-visit', Date.now());
 
@@ -44,6 +45,7 @@
       null,
       [
         ["regex", "/tools/regex", ,],
+        ["random", "/tools/random", ,],
         // ["ts-jsonschema", "/tools/ts-to-json-schema", ,],
         // ['Privacy Policy collections', '/privacy-policy-collections']
       ],
@@ -90,6 +92,9 @@
     <!-- Tools -->
     <Route path="tools/regex">
       <RegexPage/>
+    </Route>
+    <Route path="tools/random">
+      <RandomPage/>
     </Route>
     <Route path="tools/ts-to-json-schema">
       <JsonSchemaPage/>
