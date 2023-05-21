@@ -21,8 +21,8 @@
 # Random values
 
 \`\`\`
-Ksuid     ${ksuid} 
-UUIDV4    ${uuid}
+Ksuid     ${ksuid ?? "Loading..."} 
+UUIDV4    ${uuid ?? "Loading..."}
 \`\`\`
 `;
 </script>
