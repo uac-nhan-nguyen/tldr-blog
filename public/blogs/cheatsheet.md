@@ -401,6 +401,28 @@ Link: [https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/w
 
 ## Setup
 
+### git clone using ssh key
+```sh
+cd some-folder
+ssh-agent bash
+
+# Enter new bash
+ssh-add ~/.ssh/somekey
+git clone some-repo
+```
+
+### git config local with ssh key
+```sh
+git config --local core.sshCommand "/usr/bin/ssh -i /home/me/.ssh/somekey"
+```
+
+### tailwind auto-completion
+
+If tailwind auto completion not working on JetBrains Webstorm:
+
+1. Delete `tailwind.config.js` file
+2. Run `npx tailwindcss init`
+
 ### tsconfig.json
 
 ```json5
