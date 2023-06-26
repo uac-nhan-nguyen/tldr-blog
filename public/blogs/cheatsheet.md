@@ -195,7 +195,6 @@ Future<Response> home(Request request) async {
 
 ###
 
-
 ## Testing
 
 ### Postman snippets
@@ -464,7 +463,6 @@ export default defineConfig({
 
 ```
 
-
 ## Others
 
 ### dayjs
@@ -472,4 +470,9 @@ export default defineConfig({
 ```js
 // use [] to format with escape
 const format = 'd [days] HH:mm:ss'
+```
+
+### squoosh-cli
+```sh
+squoosh-cli --mozjpeg {} * -d out
 ```
