@@ -193,8 +193,6 @@ Future<Response> home(Request request) async {
 
 ```
 
-###
-
 ## Testing
 
 ### Postman snippets
