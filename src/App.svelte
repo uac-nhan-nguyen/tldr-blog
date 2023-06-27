@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Router, Route, useLocation } from "svelte-navigator";
-  import type { MenuItemType } from "./components/MenuItem.svelte";
+  import {Router, Route, useLocation} from "svelte-navigator";
+  import type {MenuItemType} from "./components/MenuItem.svelte";
   import Sidebar from "./components/Sidebar.svelte";
   import HomePage from "./pages/HomePage.svelte";
   import NotFoundPage from "./pages/NotFoundPage.svelte";
@@ -22,7 +22,7 @@
       null,
       [
         ["notepad", "/notepad", ,],
-        ["timer", "/timer", , { hide: true }],
+        ["timer", "/timer", , {hide: true}],
       ],
     ],
     [
@@ -38,6 +38,7 @@
       null,
       [
         ["cheatsheet", "/blogs/cheatsheet"],
+        ["stuff", "/blogs/stuff"],
         ["build", "/blogs/build"],
       ],
     ],
@@ -56,60 +57,60 @@
 
 <Router primary={false}>
   <header class="fixed top-0 left-0 w-[100px] md:w-[200px]">
-    <Sidebar {menus} />
+    <Sidebar {menus}/>
   </header>
 
   <main class="ml-[100px] sm:ml-[120px] md:ml-[200px] pl-4 pr-4">
     <Route path="/">
-      <HomePage />
+      <HomePage/>
     </Route>
 
     <!-- Blogs -->
     <Route path="blogs/*">
       <Route path=":id">
-        <BlogPage />
+        <BlogPage/>
       </Route>
     </Route>
 
     <!-- Apps -->
     <Route path="timer">
-      <TimerPage />
+      <TimerPage/>
     </Route>
     <Route path="notepad">
-      <NotepadPage />
+      <NotepadPage/>
     </Route>
     <Route path="draw-chart">
-      <DrawChartPage />
+      <DrawChartPage/>
     </Route>
 
     <!-- Components -->
     <Route path="text-cube">
-      <TextCubePage />
+      <TextCubePage/>
     </Route>
     <Route path="markdown-page">
-      <MarkdownPage />
+      <MarkdownPage/>
     </Route>
 
     <!-- Tools -->
     <Route path="tools/regex">
-      <RegexPage />
+      <RegexPage/>
     </Route>
     <Route path="tools/random">
-      <RandomPage />
+      <RandomPage/>
     </Route>
     <Route path="tools/ts-to-json-schema">
-      <JsonSchemaPage />
+      <JsonSchemaPage/>
     </Route>
 
     <!-- Others -->
     <Route path="settings">
-      <SettingsPage />
+      <SettingsPage/>
     </Route>
     <Route path="sandbox">
-      <SandboxPage />
+      <SandboxPage/>
     </Route>
     <Route path="**">
-      <NotFoundPage />
+      <NotFoundPage/>
     </Route>
   </main>
 </Router>
