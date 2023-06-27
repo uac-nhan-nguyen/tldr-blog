@@ -260,7 +260,7 @@ const quickName = random('$randomFullName')
 
 Link: [https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/writing-scripts/script-references/variables-list.md](https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/writing-scripts/script-references/variables-list.md)
 
-## Setup
+## Git commands
 
 ### git clone using ssh key
 ```sh
@@ -277,12 +277,22 @@ git clone some-repo
 git config --local core.sshCommand "/usr/bin/ssh -i /home/me/.ssh/somekey"
 ```
 
+### git commands
+
+```sh
+git checkout -b feature/TICKET-123
+```
+
+## Source code config
+
 ### tailwind auto-completion
 
 If tailwind auto completion not working on JetBrains Webstorm:
 
 1. Delete `tailwind.config.js` file
 2. Run `npx tailwindcss init`
+
+If it still does not work. 
 
 ### tsconfig.json
 
