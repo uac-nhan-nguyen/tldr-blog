@@ -348,3 +348,14 @@ const format = 'd [days] HH:mm:ss'
 ```sh
 squoosh-cli --mozjpeg {} * -d out
 ```
+
+### Install mac
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+ssh-keygen
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
