@@ -9,6 +9,7 @@ Try to have all on one page
 - [Postman generate random data](https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/writing-scripts/script-references/variables-list.md)
 - [Shields with icons](https://raw.githubusercontent.com/progfay/shields-with-icon/master/README.md)
 - [AWS SDK v2 Reference](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/)
+- [Generate Favicon](https://realfavicongenerator.net)
 
 ## Frontend Svelte
 
