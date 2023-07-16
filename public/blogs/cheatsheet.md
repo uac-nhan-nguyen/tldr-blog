@@ -194,6 +194,24 @@ Future<Response> home(Request request) async {
 
 ```
 
+## Typescript
+
+### global.d.ts
+
+- add `export {};` to make external module
+
+```ts
+export {}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bx-loading': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
+```
+
 ## Testing
 
 ### Postman snippets
