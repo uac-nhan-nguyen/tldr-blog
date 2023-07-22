@@ -9,6 +9,7 @@ Try to have all on one page
 - [Postman generate random data](https://github.com/postmanlabs/postman-docs/blob/develop/src/pages/docs/writing-scripts/script-references/variables-list.md)
 - [Shields with icons](https://raw.githubusercontent.com/progfay/shields-with-icon/master/README.md)
 - [AWS SDK v2 Reference](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/)
+- [Generate Favicon](https://realfavicongenerator.net)
 
 ## Frontend Svelte
 
@@ -232,6 +233,41 @@ Future<Response> home(Request request) async {
 </html>
   ''';
   return Response(200, body: html, headers: {'content-type': 'text/html'});
+}
+
+```
+
+## Typescript
+
+### global.d.ts
+
+- add `export {};` to make external module
+
+```ts
+/// src/app/(main)/layout.tsx 
+export {}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'bx-loading': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
+```
+
+### Add carbon design system web component
+```tsx
+/// src/app/(main)/layout.tsx 
+import Script from "next/script";
+
+export default function MainLayout() {
+
+  return (
+    <>
+      <Script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/loading.min.js"/>
+    </>
+  );
 }
 
 ```
