@@ -201,6 +201,7 @@ Future<Response> home(Request request) async {
 - add `export {};` to make external module
 
 ```ts
+/// src/app/(main)/layout.tsx 
 export {}
 
 declare global {
@@ -210,6 +211,22 @@ declare global {
     }
   }
 }
+```
+
+### Add carbon design system web component
+```tsx
+/// src/app/(main)/layout.tsx 
+import Script from "next/script";
+
+export default function MainLayout() {
+
+  return (
+    <>
+      <Script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/loading.min.js"/>
+    </>
+  );
+}
+
 ```
 
 ## Testing

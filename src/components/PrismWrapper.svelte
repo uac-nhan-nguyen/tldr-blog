@@ -4,6 +4,8 @@
   import 'prismjs/components/prism-json5';
   import 'prismjs/components/prism-bash';
   import 'prismjs/components/prism-dart';
+  import 'prismjs/components/prism-ts';
+  import 'prismjs/components/prism-tsx';
 
   export let className = '';
   export let classLabel = '';
