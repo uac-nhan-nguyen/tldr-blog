@@ -243,7 +243,7 @@ Future<Response> home(Request request) async {
 
 - add `export {};` to make external module
 
-```ts
+```typescript
 /// src/app/(main)/layout.tsx 
 export {}
 
