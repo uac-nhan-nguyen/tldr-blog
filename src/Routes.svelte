@@ -21,6 +21,7 @@
       "blogs",
       null,
       [
+        ["architectures", "/blogs/architectures"],
         ["nextjs", "/blogs/nextjs"],
         ["svelte", "/blogs/svelte"],
         ["html", "/blogs/html"],

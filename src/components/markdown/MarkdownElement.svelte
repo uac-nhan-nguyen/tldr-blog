@@ -247,4 +247,8 @@
   tr:nth-child(even) {
     background-color: #e7e5e4;
   }
+
+  img {
+    max-width: 600px;
+  }
 </style>

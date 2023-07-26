@@ -26,9 +26,6 @@ Writter in svelte + typescript + markdown
     Week number: {dayjs().week()}
   </div>
   <br />
-  <img 
-  class="max-w-[600px] object-contain"
-  alt='diagram' src="/images/diagram.jpg" />
   <br />
   <a href="https://github.com/uac-nhan-nguyen/tldr-blog" target="_blank">
     <img
