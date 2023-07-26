@@ -105,7 +105,7 @@
     {/each}
   </a>
 {:else if el instanceof HTMLParagraphElement}
-  <p align={el.align}>
+  <p>
     {#each el.childNodes as child}
       <svelte:self el={child} />
     {/each}
@@ -157,11 +157,13 @@
 {:else if el.tagName === "PICTURE"}
   <picture contenteditable="false" bind:innerHTML={el.innerHTML} />
 {:else if el.tagName === "TABLE"}
-  <table>
-    {#each el.childNodes as child}
-      <svelte:self el={child} />
-    {/each}
-  </table>
+  <div class='table-container'>
+    <table>
+      {#each el.childNodes as child}
+        <svelte:self el={child} />
+      {/each}
+    </table>
+  </div>
 {:else if el.tagName === "THEAD"}
   <thead>
     {#each el.childNodes as child}
@@ -229,6 +231,10 @@
     border-left: solid 8px #ef4444;
     background-color: white;
     color: #404040;
+  }
+
+  .table-container {
+    overflow: auto;
   }
 
   td {

@@ -42,7 +42,7 @@
       {level > 0 ? "pl-[4px] sm:pl-[8px]" : ""}
       text-black no-underline py-1 px-2 duration-100 
       {selectedItem === item ? 'bg-slate-300' : 'bg-white'}"
-      to={item[1]}>{selectedItem === item ? '.' : ''}{item[0]}</Link
+      to={item[1]}>{selectedItem === item ? '' : ''}{item[0]}</Link
     >
   {:else}
     <!-- Title -->
