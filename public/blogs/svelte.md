@@ -75,3 +75,11 @@ example `IconLock.svelte`
   <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
 </svg>
 ```
+
+## Use `class`
+
+```svelte
+<script lang="ts">
+    let className = $$restProps.class;
+</script>
+```

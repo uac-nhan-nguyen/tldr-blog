@@ -13,6 +13,8 @@ Try to have all on one page
 - [Optimize image squoosh](https://squoosh.app)
 - [Transform JSON to Typescript](https://transform.tools/json-to-typescript)
 - [Search unicode](https://www.amp-what.com)
+- [Nice buttons transition](https://uiverse.io/buttons)
+- [Neumorphism](https://neumorphism.io/)
 
 
 ## dayjs
