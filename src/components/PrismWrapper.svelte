@@ -8,6 +8,8 @@
   import 'prismjs/components/prism-jsx';
   import 'prismjs/components/prism-tsx';
   import 'prismjs/components/prism-yaml';
+  import 'prismjs/components/prism-sass';
+  import 'prismjs/components/prism-scss';
 
   export let className = '';
   export let classLabel = '';

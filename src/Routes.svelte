@@ -1,6 +1,5 @@
 <script lang="ts">
-  import {Router, Route, useLocation} from "svelte-navigator";
-  import type {MenuItemType} from "./components/MenuItem.svelte";
+  import {Router, Route} from "svelte-navigator";
   import Sidebar from "./components/Sidebar.svelte";
   import HomePage from "./pages/HomePage.svelte";
   import NotFoundPage from "./pages/NotFoundPage.svelte";
@@ -25,6 +24,7 @@
         ["nextjs", "/blogs/nextjs"],
         ["svelte", "/blogs/svelte"],
         ["html", "/blogs/html"],
+        ["sass", "/blogs/sass"],
         ["dart", "/blogs/dart"],
         ["postman", "/blogs/postman"],
         ["typescript", "/blogs/typescript"],
